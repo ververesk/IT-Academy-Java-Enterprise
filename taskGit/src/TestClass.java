@@ -8,6 +8,6 @@ public class TestClass {
     }
 
     private static int cube() {
-        return 3*3*3;
+        return 4*4*4;
     }
 }
