@@ -8,6 +8,7 @@ public class TestClass {
     }
 
     private static int cube() {
+        System.out.println("Bye");
         return 4*4*4;
     }
 }
