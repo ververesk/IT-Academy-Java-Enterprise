@@ -13,7 +13,6 @@
     <modules>
         <module>calc</module>
         <module>model</module>
-        <module>logic</module>
     </modules>
 
     <properties>
