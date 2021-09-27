@@ -5,27 +5,48 @@ import java.util.List;
 
 public class Student {
     private String name;
-    private List<Integer> grades=new ArrayList<>();
+    private int mathGrade;
+    private int economicGrade;
+    private int englishGrade;
+    private int computerScienceGrade;
 
-    public Student(String name, List<Integer> grades) {
+
+    public Student(String name, int mathGrade, int economicGrade, int englishGrade, int computerScienceGrade) {
         this.name = name;
-        this.grades = grades;
+        this.mathGrade = mathGrade;
+        this.economicGrade = economicGrade;
+        this.englishGrade = englishGrade;
+        this.computerScienceGrade = computerScienceGrade;
     }
 
     public String getName() {
         return name;
     }
 
-    public List<Integer> getGrades() {
-        return grades;
+    public int getMathGrade() {
+        return mathGrade;
     }
 
+    public int getEconomicGrade() {
+        return economicGrade;
+    }
+
+    public int getEnglishGrade() {
+        return englishGrade;
+    }
+
+    public int getComputerScienceGrade() {
+        return computerScienceGrade;
+    }
 
     @Override
     public String toString() {
         return "Student{" +
                 "name='" + name + '\'' +
-                ", grades=" + grades +
+                ", mathGrade=" + mathGrade +
+                ", economicGrade=" + economicGrade +
+                ", englishGrade=" + englishGrade +
+                ", computerScienceGrade=" + computerScienceGrade +
                 '}';
     }
 }
