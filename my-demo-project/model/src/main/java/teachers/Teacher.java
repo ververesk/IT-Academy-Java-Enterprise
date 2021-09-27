@@ -1,4 +1,4 @@
-package java.teachers;
+package teachers;
 
 public class Teacher {
     private String name;
@@ -10,10 +10,10 @@ public class Teacher {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getSalary() {
-        return salary;
+        return this.salary;
     }
 }

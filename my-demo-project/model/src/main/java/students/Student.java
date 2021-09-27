@@ -1,15 +1,15 @@
-package java.students;
+package students;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Student {
+
     private String name;
     private int mathGrade;
     private int economicGrade;
     private int englishGrade;
     private int computerScienceGrade;
-
 
     public Student(String name, int mathGrade, int economicGrade, int englishGrade, int computerScienceGrade) {
         this.name = name;
@@ -39,14 +39,4 @@ public class Student {
         return computerScienceGrade;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", mathGrade=" + mathGrade +
-                ", economicGrade=" + economicGrade +
-                ", englishGrade=" + englishGrade +
-                ", computerScienceGrade=" + computerScienceGrade +
-                '}';
-    }
 }
