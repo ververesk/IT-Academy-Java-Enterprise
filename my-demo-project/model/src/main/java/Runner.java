@@ -39,7 +39,7 @@ public class Runner {
         studentsMap.put(st4.getName(), List.of(st4.getMathGrade(), st4.getEconomicGrade(), st4.getEnglishGrade(), st4.getComputerScienceGrade()));
         for (String key : studentsMap.keySet()) {
             double average = Calculator.average(studentsMap.get(key));
-            System.out.println("Средняя оченка ученика " + key + "= " + average);
+            System.out.println("Средняя оценка ученика " + key + "= " + average);
         }
 
     }
