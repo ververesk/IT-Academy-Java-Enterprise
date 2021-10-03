@@ -40,4 +40,14 @@ public class Student {
         return computerScienceGrade;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", mathGrade=" + mathGrade +
+                ", economicGrade=" + economicGrade +
+                ", englishGrade=" + englishGrade +
+                ", computerScienceGrade=" + computerScienceGrade +
+                '}';
+    }
 }

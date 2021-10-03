@@ -3,7 +3,10 @@ package calc;
 import java.util.List;
 
 public final class Calculator {
-private static volatile Calculator instance;
+    /**
+     * сделала Calculator синглтоном, подумала не имеет смысл делать много экземпляров класса
+     */
+    private static volatile Calculator instance;
 
 private Calculator(){
 
@@ -24,6 +27,11 @@ public static Calculator getInstance() {
                 .sum();
     }
 
+    /**
+     * метод average есть, но он нигде не задействован
+     * @param ints
+     * @return
+     */
     public static double average(List<Integer> ints) {
         return ints.stream()
                 .mapToInt(Integer::intValue)
