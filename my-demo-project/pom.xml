@@ -13,6 +13,7 @@
     <modules>
         <module>calc</module>
         <module>model</module>
+        <module>app</module>
     </modules>
 
     <properties>
