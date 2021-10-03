@@ -1,6 +1,4 @@
 import calc.Calculator;
-import students.Student;
-import teachers.Teacher;
 
 import java.util.*;
 
@@ -26,6 +24,8 @@ public class Runner {
         listGrades.add(t4.getSalary());
         System.out.println("Сумма зарплат учителей: " + Calculator.sum(listGrades));
     }
+
+
 
     private static void workWithTeachers() {
         Student st1 = new Student("Nikolaj", 7, 8, 9, 6);
