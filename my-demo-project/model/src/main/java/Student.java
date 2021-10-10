@@ -1,5 +1,3 @@
-package students;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +15,9 @@ public class Student {
         this.economicGrade = economicGrade;
         this.englishGrade = englishGrade;
         this.computerScienceGrade = computerScienceGrade;
+    }
+
+    public Student() {
     }
 
     public String getName() {
@@ -39,4 +40,14 @@ public class Student {
         return computerScienceGrade;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", mathGrade=" + mathGrade +
+                ", economicGrade=" + economicGrade +
+                ", englishGrade=" + englishGrade +
+                ", computerScienceGrade=" + computerScienceGrade +
+                '}';
+    }
 }
