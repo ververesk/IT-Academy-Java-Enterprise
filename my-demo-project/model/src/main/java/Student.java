@@ -1,53 +1,68 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Student {
 
+    private int id;
     private String name;
-    private int mathGrade;
-    private int economicGrade;
-    private int englishGrade;
-    private int computerScienceGrade;
+    private String surname;
+    private int age;
+    private Account account;
+    private List<Integer> marks;
 
-    public Student(String name, int mathGrade, int economicGrade, int englishGrade, int computerScienceGrade) {
+    {
+        marks = new ArrayList<>();
+    }
+
+    public Student(String name, String surname, int age) {
         this.name = name;
-        this.mathGrade = mathGrade;
-        this.economicGrade = economicGrade;
-        this.englishGrade = englishGrade;
-        this.computerScienceGrade = computerScienceGrade;
+        this.surname = surname;
+        this.age = age;
     }
 
     public Student() {
+        //default constructor
     }
 
     public String getName() {
         return name;
     }
 
-    public int getMathGrade() {
-        return mathGrade;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getEconomicGrade() {
-        return economicGrade;
+    public String getSurname() {
+        return surname;
     }
 
-    public int getEnglishGrade() {
-        return englishGrade;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public int getComputerScienceGrade() {
-        return computerScienceGrade;
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     @Override
     public String toString() {
         return "Student{" +
                 "name='" + name + '\'' +
-                ", mathGrade=" + mathGrade +
-                ", economicGrade=" + economicGrade +
-                ", englishGrade=" + englishGrade +
-                ", computerScienceGrade=" + computerScienceGrade +
+                ", surname='" + surname + '\'' +
+                ", age=" + age +
                 '}';
     }
 }
