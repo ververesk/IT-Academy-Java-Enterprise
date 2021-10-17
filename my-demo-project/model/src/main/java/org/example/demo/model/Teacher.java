@@ -1,3 +1,7 @@
+package org.example.demo.model;
+
+import org.example.demo.model.Account;
+
 import java.math.BigDecimal;
 
 public class Teacher {
@@ -6,7 +10,7 @@ public class Teacher {
     private String name;
     private String surname;
     private int age;
-    private BigDecimal salary;
+    private double salary;
     private Account account;
 
     public Teacher() {
@@ -51,11 +55,11 @@ public class Teacher {
         this.account = account;
     }
 
-    public BigDecimal getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(BigDecimal salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 }

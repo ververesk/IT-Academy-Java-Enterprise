@@ -1,4 +1,6 @@
-import calc.Calculator;
+package org.example.demo.app;
+
+import org.example.demo.model.Teacher;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,19 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 @WebServlet(value = "/sum-salary")
 public class SumTeachersSalary extends HttpServlet {
-    private Calculator calculator;
     private List<Teacher> teachers;
 
     @Override
     public void init() throws ServletException {
         super.init();
    //     teachers = initTeachers();
-        calculator = Calculator.getInstance();
     }
 
     @Override
@@ -33,17 +32,17 @@ public class SumTeachersSalary extends HttpServlet {
         teachers.forEach(teacher -> writer.write(teacher.toString() + "</p>"));
     }
 
-//    private List<Teacher> initTeachers() {
-//        Teacher t1 = new Teacher("Nikolai", 1000);
-//        Teacher t2 = new Teacher("Olga", 1200);
-//        Teacher t3 = new Teacher("Viktor", 1100);
-//        Teacher t4 = new Teacher("Marina", 1050);
+//    private List<org.example.demo.model.Teacher> initTeachers() {
+//        org.example.demo.model.Teacher t1 = new org.example.demo.model.Teacher("Nikolai", 1000);
+//        org.example.demo.model.Teacher t2 = new org.example.demo.model.Teacher("Olga", 1200);
+//        org.example.demo.model.Teacher t3 = new org.example.demo.model.Teacher("Viktor", 1100);
+//        org.example.demo.model.Teacher t4 = new org.example.demo.model.Teacher("Marina", 1050);
 //        return List.of(t1, t2, t3, t4);
 //    }
 
-//    private int sumSalary(List<Teacher> teachers) {
+//    private int sumSalary(List<org.example.demo.model.Teacher> teachers) {
 //        List<Integer> salaries = teachers.stream()
-//                .map(Teacher::getSalary)
+//                .map(org.example.demo.model.Teacher::getSalary)
 //                .collect(Collectors.toList());
 //        return calculator.sum(salaries);
 //    }
