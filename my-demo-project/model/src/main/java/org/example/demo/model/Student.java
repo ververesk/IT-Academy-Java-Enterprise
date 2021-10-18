@@ -11,6 +11,7 @@ import java.util.*;
 public class Student {
 
     private int id;
+
     @Size(min=2, message="name must be min 2 symbols")
     private String name;
 
@@ -25,7 +26,7 @@ public class Student {
 
     private List<Integer> marks=new ArrayList<>();
 
-    private Map<String,String> groupList;
+    private String [] groups;
 
 
     public Student(String name, String surname, int age) {
@@ -35,13 +36,7 @@ public class Student {
     }
 
     public Student() {
-        groupList=new HashMap<>();
-        groupList.put("English", "EN");
-        groupList.put("Math", "MATH");
-        groupList.put("Computer Science", "CS");
-        groupList.put("JavaEE", "JEE");
-        groupList.put("Spring", "SPRING");
-        groupList.put("DATA BASE", "DB");
+        //Default constructor
     }
 
     public String getName() {
@@ -76,12 +71,12 @@ public class Student {
         this.account = account;
     }
 
-    public Map<String, String> getGroupList() {
-        return groupList;
+    public String[] getGroups() {
+        return groups;
     }
 
-    public void setGroupList(Map<String, String> groupList) {
-        this.groupList = groupList;
+    public void setGroups(String[] groups) {
+        this.groups = groups;
     }
 
     @Override

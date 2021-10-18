@@ -2,10 +2,10 @@
 <!DOCTYPE html>
 <html xmlns:form="http://www.w3.org/1999/xhtml">
 <body>
-<h2> Please, create Student</h2>
+<h2> Please, create Teacher</h2>
 <br>
 <br>
-<form:form action="showStudentDetails" modelAttribute="student">
+<form:form action="showTeacherDetails" modelAttribute="teacher">
 
     Name <form:input path="name"/>
     <form:errors path="name"/>
@@ -19,13 +19,17 @@
     <form:errors path="age"/>
     <br>
     <br>
-    Group(s)
-    EN <form:checkbox path="groups" value="English"/>
-    MATH <form:checkbox path="groups" value="Math"/>
-    CS <form:checkbox path="groups" value="Computer Science"/>
-    JEE <form:checkbox path="groups" value="JavaEE"/>
-    SPRING <form:checkbox path="groups" value="Spring"/>
-    DB <form:checkbox path="groups" value="Data Base"/>
+    Salary <form:input path="salary"/>
+    <br>
+    <br>
+    Group <form:select path="group">
+    <form:option value="English" label="EN"/>
+    <form:option value="Math" label="MATH"/>
+    <form:option value="Computer Science" label="CS"/>
+    <form:option value="JavaEE" label="JEE"/>
+    <form:option value="Spring" label="SPRING"/>
+    <form:option value="Data Base" label="DB"/>
+</form:select>
     <br>
     <br>
     <input type="submit" value="OK">

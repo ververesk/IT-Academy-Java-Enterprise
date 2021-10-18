@@ -1,19 +1,34 @@
 package org.example.demo.app;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import org.example.demo.model.Student;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import javax.validation.Valid;
 
-@WebServlet(value = "/studentCreator")
-public class StudentCreator extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/view/jspStudentCreator.jsp");
-        requestDispatcher.forward(req, resp);
+@Controller
+public class StudentCreator {
+
+    @RequestMapping("/") //если вводим просто слэш то возвращается это JSP
+    public String showFirstView() {
+        return "hello";
+    }
+
+    @RequestMapping("/StudentCreator")
+    public String askStudentDetails(Model model) {
+        model.addAttribute("student", new Student());
+        return "jspStudentCreator";
+    }
+
+    @RequestMapping("/showStudentDetails")
+    public String showStudentDetails(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult) { //bindingResult проверяем прошла ли валидация
+        if (bindingResult.hasErrors()) {
+            return "jspStudentCreator";
+        } else {
+            return "jspShowStudentDetails";
+        }
     }
 }

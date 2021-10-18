@@ -16,7 +16,7 @@ age: ${student.age}
 <br>
 Group(s):
 <ul>
-    <c:forEach var="group" items="${students.groups}">
+    <c:forEach var="group" items="${student.groups}">
         <li $(group) </li>
     </c:forEach>
 </ul>

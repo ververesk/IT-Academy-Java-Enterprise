@@ -2,25 +2,42 @@ package org.example.demo.model;
 
 import org.example.demo.model.Account;
 
-import java.math.BigDecimal;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 
 public class Teacher {
 
     private int id;
+
+    @Size(min=2, message="name must be min 2 symbols")
     private String name;
+
+    @NotBlank(message="surname is required field")
     private String surname;
+
+    @Min(value=18, message = "must be greater than 17")
+    @Max(value=99, message = "must be less than 100")
     private int age;
+
     private double salary;
+
     private Account account;
 
+    private String group;
+
     public Teacher() {
-        //default constructor
+       //Default Constructor
     }
 
-    public Teacher(String name, String surname, int age, BigDecimal salary) {
+    public Teacher(String name, String surname, int age, double salary, String group) {
         this.name = name;
         this.surname = surname;
         this.age = age;
+        this.salary=salary;
+        this.group=group;
     }
 
     public String getName() {
@@ -61,5 +78,13 @@ public class Teacher {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
     }
 }
