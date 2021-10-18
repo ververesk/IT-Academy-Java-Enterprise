@@ -4,6 +4,7 @@ import org.example.demo.model.ModelStudent;
 import org.example.demo.model.ModelTeacher;
 import org.example.demo.model.Student;
 import org.example.demo.model.Teacher;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
