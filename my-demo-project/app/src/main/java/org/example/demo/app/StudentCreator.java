@@ -14,7 +14,7 @@ public class StudentCreator {
 
     @RequestMapping("/") //если вводим просто слэш то возвращается это JSP
     public String showFirstView() {
-        return "hello";
+        return "HomePage";
     }
 
     @RequestMapping("/StudentCreator")

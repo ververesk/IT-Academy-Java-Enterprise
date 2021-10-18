@@ -14,7 +14,6 @@ import javax.validation.Valid;
 @Controller
 public class TeacherCreator {
 
-
     @RequestMapping("/TeacherCreator")
     public String askTeacherDetails(Model model) {
         model.addAttribute("teacher", new Teacher());

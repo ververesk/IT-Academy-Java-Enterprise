@@ -3,7 +3,9 @@ package org.example.demo.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+/*
+сделала синглетоном в условиях многопоточности, вдруг когда-нибудь будет два администратора
+ */
 public class ModelTeacher {
     private static ModelTeacher instance = new ModelTeacher();
 

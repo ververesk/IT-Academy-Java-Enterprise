@@ -87,4 +87,15 @@ public class Teacher {
     public void setGroup(String group) {
         this.group = group;
     }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", age=" + age +
+                ", salary=" + salary +
+                ", group='" + group + '\'' +
+                '}';
+    }
 }

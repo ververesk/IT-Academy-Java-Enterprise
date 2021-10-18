@@ -28,11 +28,11 @@ public class Student {
 
     private String [] groups;
 
-
-    public Student(String name, String surname, int age) {
+    public Student(String name, String surname, int age, String[] groups) {
         this.name = name;
         this.surname = surname;
         this.age = age;
+        this.groups = groups;
     }
 
     public Student() {
@@ -79,12 +79,4 @@ public class Student {
         this.groups = groups;
     }
 
-    @Override
-    public String toString() {
-        return "org.example.demo.model.Student{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }
