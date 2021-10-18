@@ -11,5 +11,7 @@
 <a href="list">View a list of teacher's names</a>
 <br>
 <a href="StudentCreator">Add one more student</a>
+<br>
+<a href="listStudent">View a list of student's surnames</a>
 </body>
 </html>

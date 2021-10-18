@@ -1,7 +1,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
-<html xmlns:form="http://www.w3.org/1999/xhtml">
-<body>
+
+<body xmlns:form="http://www.w3.org/1999/xhtml">
 <h2> Please, create Student</h2>
 <br>
 <br>
@@ -20,15 +20,11 @@
     <br>
     <br>
     Group(s)
-    EN <form:checkbox path="groups" value="English"/>
-    MATH <form:checkbox path="groups" value="Math"/>
-    CS <form:checkbox path="groups" value="Computer Science"/>
-    JEE <form:checkbox path="groups" value="JavaEE"/>
-    SPRING <form:checkbox path="groups" value="Spring"/>
-    DB <form:checkbox path="groups" value="Data Base"/>
+    <form:checkboxes path="groups" items="${student.groupsList}"/>
     <br>
     <br>
     <input type="submit" value="OK">
 </form:form>
+<a href="HomePage">Home Page</a>
 </body>
 </html>

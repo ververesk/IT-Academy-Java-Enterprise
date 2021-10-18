@@ -20,5 +20,7 @@ group: ${teacher.group}
 <a href="list">View a list of teacher's names</a>
 <br>
 <a href="TeacherCreator">Add one more teacher</a>
+<br>
+<a href="HomePage">Home Page</a>
 </body>
 </html>

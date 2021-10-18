@@ -28,15 +28,22 @@ public class Student {
 
     private String [] groups;
 
-    public Student(String name, String surname, int age, String[] groups) {
+    private Map<String , String> groupsList;
+
+    public Student(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        this.groups = groups;
     }
 
     public Student() {
-        //Default constructor
+        groupsList=new HashMap<>();
+        groupsList.put("English", "EN");
+        groupsList.put("Math", "MATH");
+        groupsList.put("Computer Science", "CS");
+        groupsList.put("JavaEE", "JEE");
+        groupsList.put("Spring", "SPRING");
+        groupsList.put("Data Base", "DB");
     }
 
     public String getName() {
@@ -79,4 +86,11 @@ public class Student {
         this.groups = groups;
     }
 
+    public Map<String, String> getGroupsList() {
+        return groupsList;
+    }
+
+    public void setGroupsList(Map<String, String> groupsList) {
+        this.groupsList = groupsList;
+    }
 }

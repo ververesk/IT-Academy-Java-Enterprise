@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html xmlns:form="http://www.w3.org/1999/xhtml">
+
 <html>
 
 <body>
@@ -17,8 +17,14 @@ age: ${student.age}
 Group(s):
 <ul>
     <c:forEach var="group" items="${student.groups}">
-        <li $(group) </li>
+        <li <c:out value="${group}"/> </li>
     </c:forEach>
 </ul>
+<br>
+<a href="listStudent">View a list of student's names</a>
+<br>
+<a href="StudentCreator">Add one more student</a>
+<br>
+<a href="HomePage">Home Page</a>
 </body>
 </html>

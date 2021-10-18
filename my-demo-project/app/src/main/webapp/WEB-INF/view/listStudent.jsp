@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Teacher's names</title>
+    <title>Student's surnames</title>
 </head>
 
 <body>
@@ -10,14 +10,14 @@
 <div>
     <div>
         <div>
-            <h2>Teacher's names</h2>
+            <h2>Student's surnames</h2>
         </div>
         <%
-        List<String> names = (List<String>) request.getAttribute("userNames");
+        List<String> surnames = (List<String>) request.getAttribute("userSurnames");
 
-        if (names != null && !names.isEmpty()) {
+        if (surnames != null && !surnames.isEmpty()) {
         out.println("<ui>");
-            for (String s : names) {
+            for (String s : surnames) {
             out.println("<li>" + s + "</li>");
             }
             out.println("</ui>");
@@ -25,8 +25,7 @@
         %>
     </div>
 </div>
-<a href="avgTeachersSalary">View the average salary of teachers</a>
-<br>
 <a href="HomePage">Home Page</a>
+
 </body>
 </html>
