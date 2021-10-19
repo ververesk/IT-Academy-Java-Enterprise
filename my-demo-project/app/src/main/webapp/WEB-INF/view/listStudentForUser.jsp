@@ -26,6 +26,7 @@
         %>
     </div>
 </div>
-<a href="<c:url value='/logout' />">Logout</a>
+<br>
+<a href="homePageForUser">Home Page</a>
 
 </body>

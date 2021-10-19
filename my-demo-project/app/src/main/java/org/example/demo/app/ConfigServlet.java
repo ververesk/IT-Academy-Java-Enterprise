@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ConfigServlet {
 
-    @RequestMapping("/homePage") //если вводим просто слэш то возвращается это JSP
+    @RequestMapping("/homePage")
     public String showHomePage() {
         return "homePage";
     }
@@ -13,5 +13,15 @@ public class ConfigServlet {
     @RequestMapping("/") //если вводим просто слэш то возвращается это JSP
     public String showFirstView() {
         return "login";
+    }
+
+    @RequestMapping("/homePageForUser")
+    public String homePageForUser() {
+        return "homePageForUser";
+    }
+
+    @RequestMapping("/homePageForTeacher")
+    public String homePageForTeacher() {
+        return "homePageForTeacher";
     }
 }

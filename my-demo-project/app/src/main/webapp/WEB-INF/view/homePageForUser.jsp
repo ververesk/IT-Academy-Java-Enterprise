@@ -8,7 +8,7 @@
 <body>
 <h1> Home page</h1>
 <br>
-<a href="listStudent">View a list of student's surnames</a>
+<a href="listStudentForUser">View a list of student's surnames</a>
 <br>
 <a href="<c:url value='/logout' />">Logout</a>
 </body>
