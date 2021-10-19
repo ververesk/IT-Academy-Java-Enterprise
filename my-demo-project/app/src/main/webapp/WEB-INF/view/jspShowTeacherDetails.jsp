@@ -21,6 +21,6 @@ group: ${teacher.group}
 <br>
 <a href="TeacherCreator">Add one more teacher</a>
 <br>
-<a href="HomePage">Home Page</a>
+<a href="homePage">Home Page</a>
 </body>
 </html>

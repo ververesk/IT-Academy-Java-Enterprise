@@ -24,6 +24,6 @@
     </div>
 </div>
 <br>
-<a href="HomePage">Home Page</a>
+<a href="homePage">Home Page</a>
 </body>
 </html>

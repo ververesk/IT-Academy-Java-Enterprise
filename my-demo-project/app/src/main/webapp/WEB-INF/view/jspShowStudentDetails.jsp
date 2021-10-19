@@ -21,10 +21,10 @@ Group(s):
     </c:forEach>
 </ul>
 <br>
-<a href="listStudent">View a list of student's names</a>
+<a href="listStudent">View a list of student's surnames</a>
 <br>
 <a href="StudentCreator">Add one more student</a>
 <br>
-<a href="HomePage">Home Page</a>
+<a href="homePage">Home Page</a>
 </body>
 </html>

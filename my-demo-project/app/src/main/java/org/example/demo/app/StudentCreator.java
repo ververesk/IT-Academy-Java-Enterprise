@@ -18,11 +18,6 @@ import javax.validation.Valid;
 @Controller
 public class StudentCreator {
 
-    @RequestMapping("/HomePage") //если вводим просто слэш то возвращается это JSP
-    public String showFirstView() {
-        return "HomePage";
-    }
-
     @RequestMapping("/StudentCreator")
     public String askStudentDetails(Model model) {
         model.addAttribute("student", new Student());

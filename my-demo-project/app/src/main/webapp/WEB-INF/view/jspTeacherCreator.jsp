@@ -34,6 +34,6 @@
     <br>
     <input type="submit" value="OK">
 </form:form>
-<a href="HomePage">Home Page</a>
+<a href="homePage">Home Page</a>
 </body>
 </html>

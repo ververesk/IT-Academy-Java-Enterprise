@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -25,6 +26,7 @@
         %>
     </div>
 </div>
+<a href="listStudentForUser">View a list of student's surnames</a>
 <br>
 <a href="<c:url value='/logout' />">Logout</a>
 </body>
