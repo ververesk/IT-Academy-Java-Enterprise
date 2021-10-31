@@ -1,4 +1,6 @@
-import calc.Calculator;
+package org.example.demo.app;
+
+import org.example.demo.model.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +19,7 @@ public class Students extends HttpServlet {
         @Override
         public void init() throws ServletException {
                 super.init();
-                students = initStudents();
+   //             students = initStudents();
         }
 
         @Override
@@ -29,11 +31,11 @@ public class Students extends HttpServlet {
 
         }
 
-        private List<Student> initStudents() {
-                Student st1 = new Student("Nikolaj", 7, 8, 9, 6);
-                Student st2 = new Student("Maria", 9, 8, 9, 9);
-                Student st3 = new Student("Petr", 7, 8, 10, 5);
-                Student st4 = new Student("Olga", 5, 8, 6, 6);
-                return List.of(st1, st2, st3, st4);
-        }
+//        private List<org.example.demo.model.Student> initStudents() {
+//                org.example.demo.model.Student st1 = new org.example.demo.model.Student("Nikolaj", 7, 8, 9, 6);
+//                org.example.demo.model.Student st2 = new org.example.demo.model.Student("Maria", 9, 8, 9, 9);
+//                org.example.demo.model.Student st3 = new org.example.demo.model.Student("Petr", 7, 8, 10, 5);
+//                org.example.demo.model.Student st4 = new org.example.demo.model.Student("Olga", 5, 8, 6, 6);
+//                return List.of(st1, st2, st3, st4);
+//        }
 }
