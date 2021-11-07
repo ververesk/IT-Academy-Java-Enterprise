@@ -34,6 +34,10 @@
                 <td><input type="text" name="age" value="${student.age}" /></td>
             </tr>
             <tr>
+                <td>Username</td>
+                <td><input type="text" name="username" value="${student.username}" /></td>
+            </tr>
+            <tr>
                 <td colspan = "2">
                     <input type="submit" value="Submit" />
                     <a href="${pageContext.request.contextPath}/studentList">Cancel</a>

@@ -10,15 +10,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Slf4j
 public class StudentRepositoryPostgres implements StudentRepository {
     DataSource dataSource;
-    private static final String INSERT_Student_SQL = "INSERT INTO students (name, surname, age) VALUES (?, ?, ?)";
-    private static final String selectAllFields = "select id, name, surname, age from students";
-    private static final String updateStudent = "update students set name=?, surname=?, age=? where id=?";
-    private static final String findStudentByID = "select id, name, surname, age from students where id=?";
+    private static final String insertStudent = "insert into students (name, surname, age, username) VALUES (?, ?, ?, ?)";
+    private static final String selectAllFields = "select id, name, surname, age, username from students";
+    private static final String updateStudent = "update students set name=?, surname=?, age=?, username=? where id=?";
+    private static final String findStudentByID = "select id, name, surname, age, username from students where id=?";
+    private static final String deleteStudentByID = "delete from students where id=?";
 
     private static volatile StudentRepositoryPostgres instance;
 
@@ -49,11 +50,13 @@ public class StudentRepositoryPostgres implements StudentRepository {
                 String name = rs.getString("name");
                 String surname = rs.getString("surname");
                 int age = rs.getInt("age");
+                String username = rs.getString("username");
                 Student student = new Student();
                 student.withId(id);
                 student.withName(name);
                 student.withSurname(surname);
                 student.withAge(age);
+                student.withUsername(username);
                 studentList.add(student);
             }
         } catch (SQLException e) {
@@ -73,7 +76,8 @@ public class StudentRepositoryPostgres implements StudentRepository {
                 String name = rs.getString("name");
                 String surname = rs.getString("surname");
                 int age = rs.getInt("age");
-                Student student = new Student(stId, name, surname, age);
+                String username = rs.getString("username");
+                Student student = new Student(stId, name, surname, age, username);
                 return student;
             }
         } catch (SQLException e) {
@@ -82,7 +86,6 @@ public class StudentRepositoryPostgres implements StudentRepository {
         return null;
     }
 
-
     @Override
     public void update(Student student) {
         try (Connection con = dataSource.getConnection();
@@ -90,44 +93,48 @@ public class StudentRepositoryPostgres implements StudentRepository {
             ps.setString(1, student.getName());
             ps.setString(2, student.getSurname());
             ps.setInt(3, student.getAge());
-            ps.setInt(4, student.getId());
+            ps.setString(4, student.getUsername());
+            ps.setInt(5, student.getId());
             int affectedRows = ps.executeUpdate();
             if (affectedRows == 0) {
                 throw new SQLException("Creating user failed, no rows affected.");
             }
-
+            con.commit();
         } catch (SQLException e) {
             log.error(e.getMessage());
         }
     }
 
-//    @Override
-//    public Optional<Student> find(int id) {
-//        return Optional.empty();
-//    }
+    @Override
+    public void insert(Student student) {
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement ps = con.prepareStatement(insertStudent)) {
+            ps.setString(1, student.getName());
+            ps.setString(2, student.getSurname());
+            ps.setInt(3, student.getAge());
+            ps.setString(4, student.getUsername());
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating user failed, no rows affected.");
+            }
+            con.commit();
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+        }
+    }
 
-    //   @Override
-    //   public Student update(Student entity) {
-
-
-//        PreparedStatement pstm = conn.prepareStatement(sql);
-//
-//        pstm.setString(1, product.getName());
-//        pstm.setFloat(2, product.getPrice());
-//        pstm.setString(3, product.getCode());
-//        pstm.executeUpdate();
-//        return null;
-//    }
-//
-//    @Override
-//    public Student insert(Student entity) {
-//        PreparedStatement pstm = conn.prepareStatement(sql);
-//
-//        pstm.setString(1, product.getName());
-//        pstm.setFloat(2, product.getPrice());
-//        pstm.setString(3, product.getCode());
-//        pstm.executeUpdate();
-//        return null;
-    //}
-
+    @Override
+    public void remove(int id) {
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement ps = con.prepareStatement(deleteStudentByID)) {
+            ps.setInt(1, id);
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating user failed, no rows affected.");
+            }
+            con.commit();
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+        }
+    }
 }

@@ -3,10 +3,10 @@ package com.grigorovich.db_it.app.repositories;
 import java.sql.Connection;
 import java.util.List;
 
-public interface Repository <T>{
+public interface Repository<T> {
     List<T> findAll();
-   T find(int id);
+    T find(int id);
     void update(T entity);
-//    T insert(T entity);
-//    Optional<T> remove(T entity);
+    void insert(T entity);
+    void remove(int id);
 }

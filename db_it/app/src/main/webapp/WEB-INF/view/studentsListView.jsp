@@ -15,6 +15,9 @@ pageEncoding="UTF-8"%>
         <th>name</th>
         <th>surname</th>
         <th>age</th>
+        <th>username</th>
+        <th>edit</th>
+        <th>delete</th>
     </tr>
 
 
@@ -24,14 +27,16 @@ pageEncoding="UTF-8"%>
             <td>"${st.name}"</td>
             <td>"${st.surname}"</td>
             <td>"${st.age}"</td>
+            <td>"${st.username}"</td>
             <td>
                 <a href="updateStudent?id=${st.id}">Edit</a>
             </td>
             <td>
-                <a href="deleteProduct?code=${product.code}">Delete</a>
+                <a href="deleteStudent?id=${st.id}">Delete</a>
             </td>
         </tr>
     </c:forEach>
 </table>
+<a href="createStudent" >Create Student</a>
 </body>
 </html>

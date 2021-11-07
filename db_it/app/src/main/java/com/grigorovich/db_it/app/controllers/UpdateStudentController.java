@@ -42,7 +42,8 @@ public class UpdateStudentController extends HttpServlet {
         String name = (String) request.getParameter("name");
         String surname = (String) request.getParameter("surname");
         int age = Integer.parseInt(request.getParameter("age"));
-        Student student = new Student(id, name, surname, age);
+        String username = (String) request.getParameter("username");
+        Student student = new Student(id, name, surname, age, username);
         repository.update(student);
         response.sendRedirect(request.getContextPath() + "/studentList");
     }

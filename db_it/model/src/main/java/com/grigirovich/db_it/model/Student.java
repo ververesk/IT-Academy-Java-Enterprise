@@ -21,11 +21,19 @@ public class Student implements Serializable {
     private Set<Course> courseSet=new HashSet<>();
     private Grade grade;
 
-    public Student(int id, String name, String surname, int age) {
+    public Student(String name, String surname, int age, String username) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+        this.username = username;
+    }
+
+    public Student(int id, String name, String surname, int age, String username) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.age = age;
+        this.username = username;
     }
 
     public Student withId(int id) {
