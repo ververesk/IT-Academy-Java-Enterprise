@@ -25,31 +25,25 @@ public class UpdateStudentController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         int id = Integer.parseInt(request.getParameter("id"));
         Student student = repository.find(id);
-        ;
-        if (student == null) {
-            response.sendRedirect(request.getServletPath() + "/studentList");
-            return;
+        if (student !=null) {
+            request.setAttribute("student", student);
+            getServletContext().getRequestDispatcher("/WEB-INF/view/studentUpdateView.jsp").forward(request, response);
+        } else {
+            getServletContext().getRequestDispatcher("/WEB-INF/view/notfound.jsp").forward(request, response);
         }
-        request.setAttribute("student", student);
-        RequestDispatcher dispatcher = request.getServletContext()
-                .getRequestDispatcher("/WEB-INF/view/studentUpdateView.jsp");
-        dispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      //  Connection conn = ParameterUtils.getStoredConnection(request);
         int id = Integer.parseInt(request.getParameter("id"));
         String name = (String) request.getParameter("name");
         String surname = (String) request.getParameter("surname");
         int age = Integer.parseInt(request.getParameter("age"));
         Student student = new Student(id, name, surname, age);
         repository.update(student);
-        request.setAttribute("student", student);
         response.sendRedirect(request.getContextPath() + "/studentList");
     }
 }

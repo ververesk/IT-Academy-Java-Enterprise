@@ -17,7 +17,7 @@ public class StudentRepositoryPostgres implements StudentRepository {
     DataSource dataSource;
     private static final String INSERT_Student_SQL = "INSERT INTO students (name, surname, age) VALUES (?, ?, ?)";
     private static final String selectAllFields = "select id, name, surname, age from students";
-    private static final String updateStudent = "Update students set name=?, surname=?, age=? where id=?";
+    private static final String updateStudent = "update students set name=?, surname=?, age=? where id=?";
     private static final String findStudentByID = "select id, name, surname, age from students where id=?";
 
     private static volatile StudentRepositoryPostgres instance;
@@ -69,11 +69,11 @@ public class StudentRepositoryPostgres implements StudentRepository {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-
+                int stId = rs.getInt("id");
                 String name = rs.getString("name");
                 String surname = rs.getString("surname");
                 int age = rs.getInt("age");
-                Student student = new Student(id, name, surname, age);
+                Student student = new Student(stId, name, surname, age);
                 return student;
             }
         } catch (SQLException e) {
@@ -90,6 +90,7 @@ public class StudentRepositoryPostgres implements StudentRepository {
             ps.setString(1, student.getName());
             ps.setString(2, student.getSurname());
             ps.setInt(3, student.getAge());
+            ps.setInt(4, student.getId());
             int affectedRows = ps.executeUpdate();
             if (affectedRows == 0) {
                 throw new SQLException("Creating user failed, no rows affected.");
