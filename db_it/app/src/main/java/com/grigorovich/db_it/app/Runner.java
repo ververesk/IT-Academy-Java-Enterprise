@@ -15,7 +15,7 @@ import java.util.List;
 public class Runner {
     private static final StudentRepository repository = RepositoryFactory.getStudentRepository();
     public static void main(String[] args) {
-        List<Student> students = repository.findMath();
+        List<Student> students = repository.findNoahSmith();
         System.out.println(students);
 
     }

@@ -2,12 +2,10 @@ package com.grigirovich.db_it.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Teacher {
     private int id;
     private String name;
@@ -15,8 +13,7 @@ public class Teacher {
     private int salary;
     private Integer courseId; // потому что может быть null
     private String username;
-    private Course course;
-    private Set<Student> studentSet=new HashSet<>();
+
 
     public Teacher withId(int id) {
         setId(id);
@@ -59,18 +56,4 @@ public class Teacher {
         this.courseId = courseId;
         this.username = username;
     }
-
-    public Teacher withCourse(Course course) {
-        setCourse(course);
-        return this;
-    }
-
-    public Teacher addStudent(Student student) {
-        if (student != null) {
-            studentSet.add(student);
-        }
-        return this;
-    }
-
-
 }

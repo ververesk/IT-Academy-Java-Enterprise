@@ -7,6 +7,15 @@
   <display-name>dbit</display-name>
 
   <absolute-ordering />
+  <filter>
+    <filter-name>AuthFilter</filter-name>
+    <filter-class>com.grigorovich.db_it.app.filter.AuthFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>AuthFilter</filter-name>
+    <url-pattern>/</url-pattern>
+  </filter-mapping>
 
 
 </web-app>
