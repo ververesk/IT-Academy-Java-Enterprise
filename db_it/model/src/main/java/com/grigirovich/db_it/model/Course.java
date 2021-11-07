@@ -4,14 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Course {
+public class Course implements Serializable {
     private int courseId;
     private String courseName;
 
-    public Course withId(int courseId) {
+    public Course withCourseId(int courseId) {
         setCourseId(courseId);
         return this;
     }
@@ -19,5 +21,9 @@ public class Course {
     public Course withCourseName(String courseName) {
         setCourseName(courseName);
         return this;
+    }
+
+    public Course(String courseName) {
+        this.courseName = courseName;
     }
 }

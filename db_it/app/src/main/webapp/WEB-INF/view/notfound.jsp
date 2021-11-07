@@ -12,5 +12,8 @@
 <br>
 <Br>
 <a href="teacherList" >Teachers</a>
+<br>
+<Br>
+<a href="courseList" >Courses</a>
 </body>
 </html>
