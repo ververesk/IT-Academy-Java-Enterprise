@@ -24,7 +24,7 @@ public class StudentRepositoryPostgres implements StudentRepository {
     private static final String updateStudent = "update students set name=?, surname=?, age=?, username=? where id=?";
     private static final String findStudentByID = "select id, name, surname, age, username from students where id=?";
     private static final String deleteStudentByID = "delete from students where id=?";
-    private static final String findMath = "select st.id, name, surname, course_name, grades from students st join student_cours_grades scg on (st.id=scg.student_id) join courses c on (scg.course_id=c.course_id) where c.course_id=1";
+    private static final String findMath = "select st.id st_id, c.course_id c_course_id, name, surname, course_name from students st join student_cours_grades scg on (st.id=scg.student_id) join courses c on (scg.course_id=c.course_id) where c.course_id=1";
 
     private static volatile StudentRepositoryPostgres instance;
 
@@ -151,28 +151,20 @@ public class StudentRepositoryPostgres implements StudentRepository {
              PreparedStatement ps = con.prepareStatement(findMath);
              ResultSet rs = ps.executeQuery()) {
             Map<Integer, Course> courseMap = new HashMap<>();
-            Map<Integer, Grade> gradeMap = new HashMap<>();
             while (rs.next()) {
-                int stId = rs.getInt("st.id");
-                int scgId = rs.getInt("scg.student_id");
-                int cId = rs.getInt("c.course_id");
-
+                int stId = rs.getInt("st_id");
+                int cId = rs.getInt("c_course_id");
 
                 courseMap.putIfAbsent(cId, new Course()
                         .withCourseId(cId)
                         .withCourseName(rs.getString("course_name")));
 
-                gradeMap.putIfAbsent(scgId, new Grade()
-                        .withId(scgId)
-                        .withGrades(rs.getInt("grades")));
-
                 studentMap.putIfAbsent(stId,
                         new Student()
                                 .withId(stId)
                                 .withName(rs.getString("name"))
-                                .withSurname("surname")
-                                .addCourse(courseMap.get(cId))
-                                .addGrades(gradeMap.get(scgId)));
+                                .withSurname(rs.getString("surname"))
+                                .addCourse(courseMap.get(cId)));
             }
         } catch (SQLException e) {
             log.error(e.getMessage());

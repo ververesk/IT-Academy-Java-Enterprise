@@ -8,7 +8,7 @@
 <body>
 
 <table>
-    <th>Name</th><th>Surname</th><th>Course</th><th>Grades</th>
+    <th>Name</th><th>Surname</th><th>Course</th>
     <c:forEach var="studentsMath" items="${requestScope.studentsMath}">
         <tr>
             <td><c:out value="${studentsMath.name}"/></td>
@@ -16,10 +16,6 @@
             <c:set value="${studentsMath.courseList}" scope="page" var="course"/>
             <c:forEach items="${course}" var="cour">
                 <td><c:out value="${cour.courseName}"/></td>
-            </c:forEach>
-            <c:set value="${studentsMath.gradeList}" scope="page" var="grades"/>
-            <c:forEach items="${grades}" var="gr">
-                <td><c:out value="${gr.grades}"/></td>
             </c:forEach>
         </tr>
     </c:forEach>

@@ -17,7 +17,6 @@ public class Student implements Serializable {
     private int age;
     private String username;
     private List<Course> courseList=new ArrayList<>();
-    private List<Grade> gradeList=new ArrayList<>();
 
     public Student(String name, String surname, int age, String username) {
         this.name = name;
@@ -66,10 +65,4 @@ public class Student implements Serializable {
         return this;
     }
 
-    public Student addGrades(Grade grade) {
-        if (gradeList != null) {
-            gradeList.add(grade);
-        }
-        return this;
-    }
 }
