@@ -14,6 +14,11 @@
     <artifactId>app</artifactId>
     <dependencies>
         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>30.1.1-jre</version>
+        </dependency>
+        <dependency>
             <groupId>com.grigorovich.db_it</groupId>
             <artifactId>model</artifactId>
             <version>1.0-SNAPSHOT</version>

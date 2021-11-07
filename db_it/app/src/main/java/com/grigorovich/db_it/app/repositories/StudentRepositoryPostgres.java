@@ -1,5 +1,7 @@
 package com.grigorovich.db_it.app.repositories;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import com.grigirovich.db_it.model.Course;
 import com.grigirovich.db_it.model.Grade;
 import com.grigirovich.db_it.model.Student;
@@ -181,7 +183,7 @@ public class StudentRepositoryPostgres implements StudentRepository {
 
     @Override
     public List<Student> findNoahSmith() {
-        Map<Integer, Student> studentMap = new HashMap<>();
+        Multimap<Integer, Student> studentMap = ArrayListMultimap.create();
         try (Connection con = dataSource.getConnection();
              PreparedStatement ps = con.prepareStatement(findNoahSmith);
              ResultSet rs = ps.executeQuery()) {
@@ -200,7 +202,7 @@ public class StudentRepositoryPostgres implements StudentRepository {
                         .withCourseId(cId)
                         .withCourseName(rs.getString("course_name")));
 
-                studentMap.putIfAbsent(stId,
+                studentMap.put(stId,
                         new Student()
                                 .withId(stId)
                                 .withName(rs.getString("name"))

@@ -3,22 +3,22 @@
 <!DOCTYPE>
 <html lang="ru">
 <head>
-    <title>Math</title>
+    <title>Noah Smith</title>
 </head>
 <body>
 
 <table>
-    <h3> сделала для одного предмета для остальных всё делается по аналогии</h3>
+    <h3> сделала для одного студента для остальных всё делается по аналогии</h3>
     <th>Name</th><th>Surname</th><th>Course</th><th>Grades</th>
-    <c:forEach var="studentsMath" items="${requestScope.studentsMath}">
+    <c:forEach var="noahSmith" items="${requestScope.noahSmith}">
         <tr>
-            <td><c:out value="${studentsMath.name}"/></td>
-            <td><c:out value="${studentsMath.surname}"/></td>
-            <c:set value="${studentsMath.courseList}" scope="page" var="course"/>
+            <td><c:out value="${noahSmith.name}"/></td>
+            <td><c:out value="${noahSmith.surname}"/></td>
+            <c:set value="${noahSmith.courseList}" scope="page" var="course"/>
             <c:forEach items="${course}" var="cour">
                 <td><c:out value="${cour.courseName}"/></td>
             </c:forEach>
-            <c:set value="${studentsMath.gradeList}" scope="page" var="grades"/>
+            <c:set value="${noahSmith.gradeList}" scope="page" var="grades"/>
             <c:forEach items="${grades}" var="grad">
                 <td><c:out value="${grad.grades}"/></td>
             </c:forEach>
