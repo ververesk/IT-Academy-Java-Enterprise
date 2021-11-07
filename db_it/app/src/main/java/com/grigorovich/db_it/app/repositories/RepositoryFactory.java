@@ -41,7 +41,7 @@ public class RepositoryFactory {
         return CourseRepositoryPostgres.getInstance(datasource);
     }
 
-    public static TeacherRepository geTeacherRepository() {
+    public static TeacherRepository getTeacherRepository() {
         return TeacherRepositoryPostgres.getInstance(datasource);
     }
 }

@@ -17,7 +17,7 @@ import java.io.IOException;
 @Slf4j
 @WebServlet(urlPatterns = {"/updateTeacher"})
 public class UpdateTeacherController extends HttpServlet {
-    private final TeacherRepository repository = RepositoryFactory.geTeacherRepository();
+    private final TeacherRepository repository = RepositoryFactory.getTeacherRepository();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

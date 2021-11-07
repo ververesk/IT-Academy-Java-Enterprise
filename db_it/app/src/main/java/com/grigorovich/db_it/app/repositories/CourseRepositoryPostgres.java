@@ -1,7 +1,7 @@
 package com.grigorovich.db_it.app.repositories;
 
 import com.grigirovich.db_it.model.Course;
-import com.grigirovich.db_it.model.Student;
+
 import lombok.extern.slf4j.Slf4j;
 
 import javax.sql.DataSource;

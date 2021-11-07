@@ -17,7 +17,7 @@ import java.util.List;
 
 @WebServlet(urlPatterns = {"/teacherList"})
 public class TeacherListController extends HttpServlet {
-    private final TeacherRepository repository = RepositoryFactory.geTeacherRepository();
+    private final TeacherRepository repository = RepositoryFactory.getTeacherRepository();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

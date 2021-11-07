@@ -9,6 +9,11 @@
 <body>
 <h3>Teachers</h3>
 
+<a href="sumSalary" >total salary of teachers</a>
+<br>
+<br>
+<a href="avgSalary" >average salary of teachers</a>
+
 <table border="1" cellpadding="5" cellspacing="1" >
     <tr>
         <th>id</th>

@@ -1,6 +1,5 @@
 package com.grigorovich.db_it.app.repositories;
 
-import com.grigirovich.db_it.model.Student;
 import com.grigirovich.db_it.model.Teacher;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,6 +19,9 @@ public class TeacherRepositoryPostgres implements TeacherRepository {
     private static final String updateTeacher = "update teachers set name=?, surname=?, salary=?, course_id=?, username=? where id=?";
     private static final String findTeacherByID = "select id, name, surname, salary, course_id, username from teachers where id=?";
     private static final String deleteTeacherByID = "delete from teachers where id=?";
+    private static final String sumSalaryTeachers = "select sum(salary) as \"sum\" from teachers";
+    private static final String avgTeacherSalary = "select avg(salary) average_salary from teachers";
+
 
     private static volatile TeacherRepositoryPostgres instance;
 
@@ -142,4 +144,35 @@ public class TeacherRepositoryPostgres implements TeacherRepository {
             log.error(e.getMessage());
         }
     }
+
+    @Override
+    public int sumTeacherSalary() {
+        int sum = 0;
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement ps = con.prepareStatement(sumSalaryTeachers);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                sum = rs.getInt("sum");
+            }
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+        }
+        return sum;
+    }
+
+    @Override
+    public double avgTeacherSalary() {
+        double avg = 0;
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement ps = con.prepareStatement(avgTeacherSalary);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                avg = rs.getDouble("average_salary");
+            }
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+        }
+        return avg;
+    }
 }
+

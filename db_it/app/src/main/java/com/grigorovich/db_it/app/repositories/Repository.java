@@ -1,6 +1,5 @@
 package com.grigorovich.db_it.app.repositories;
 
-import java.sql.Connection;
 import java.util.List;
 
 public interface Repository<T> {

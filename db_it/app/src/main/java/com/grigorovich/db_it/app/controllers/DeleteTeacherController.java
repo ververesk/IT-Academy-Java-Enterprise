@@ -13,7 +13,7 @@ import java.io.IOException;
 
 @WebServlet("/deleteTeacher")
 public class DeleteTeacherController extends HttpServlet {
-    private final TeacherRepository repository = RepositoryFactory.geTeacherRepository();
+    private final TeacherRepository repository = RepositoryFactory.getTeacherRepository();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
