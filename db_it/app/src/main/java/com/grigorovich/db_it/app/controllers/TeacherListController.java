@@ -1,11 +1,8 @@
 package com.grigorovich.db_it.app.controllers;
 
-import com.grigirovich.db_it.model.Student;
 import com.grigirovich.db_it.model.Teacher;
 import com.grigorovich.db_it.app.repositories.RepositoryFactory;
-import com.grigorovich.db_it.app.repositories.StudentRepository;
 import com.grigorovich.db_it.app.repositories.TeacherRepository;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

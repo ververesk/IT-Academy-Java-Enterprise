@@ -5,9 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 @Data
 @NoArgsConstructor
@@ -18,8 +16,8 @@ public class Student implements Serializable {
     private String surname;
     private int age;
     private String username;
-    private Set<Course> courseSet=new HashSet<>();
-    private Grade grade;
+    private List<Course> courseList=new ArrayList<>();
+    private List<Grade> gradeList=new ArrayList<>();
 
     public Student(String name, String surname, int age, String username) {
         this.name = name;
@@ -62,14 +60,16 @@ public class Student implements Serializable {
     }
 
     public Student addCourse(Course course) {
-        if (courseSet != null) {
-            courseSet.add(course);
+        if (courseList != null) {
+            courseList.add(course);
         }
         return this;
     }
 
-    public Student withGrade(Grade grade) {
-        setGrade(grade);
+    public Student addGrades(Grade grade) {
+        if (gradeList != null) {
+            gradeList.add(grade);
+        }
         return this;
     }
 }

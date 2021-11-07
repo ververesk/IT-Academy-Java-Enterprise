@@ -1,5 +1,7 @@
 package com.grigorovich.db_it.app.repositories;
 
+import com.grigirovich.db_it.model.Course;
+import com.grigirovich.db_it.model.Grade;
 import com.grigirovich.db_it.model.Student;
 import lombok.extern.slf4j.Slf4j;
 
@@ -9,7 +11,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Slf4j
@@ -20,6 +24,7 @@ public class StudentRepositoryPostgres implements StudentRepository {
     private static final String updateStudent = "update students set name=?, surname=?, age=?, username=? where id=?";
     private static final String findStudentByID = "select id, name, surname, age, username from students where id=?";
     private static final String deleteStudentByID = "delete from students where id=?";
+    private static final String findMath = "select st.id, name, surname, course_name, grades from students st join student_cours_grades scg on (st.id=scg.student_id) join courses c on (scg.course_id=c.course_id) where c.course_id=1";
 
     private static volatile StudentRepositoryPostgres instance;
 
@@ -137,4 +142,43 @@ public class StudentRepositoryPostgres implements StudentRepository {
             log.error(e.getMessage());
         }
     }
+
+    @Override
+    public List<Student> findMath() {
+        List<Student> result = new ArrayList<>();
+        Map<Integer, Student> studentMap = new HashMap<>();
+        try (Connection con = dataSource.getConnection();
+             PreparedStatement ps = con.prepareStatement(findMath);
+             ResultSet rs = ps.executeQuery()) {
+            Map<Integer, Course> courseMap = new HashMap<>();
+            Map<Integer, Grade> gradeMap = new HashMap<>();
+            while (rs.next()) {
+                int stId = rs.getInt("st.id");
+                int scgId = rs.getInt("scg.student_id");
+                int cId = rs.getInt("c.course_id");
+
+
+                courseMap.putIfAbsent(cId, new Course()
+                        .withCourseId(cId)
+                        .withCourseName(rs.getString("course_name")));
+
+                gradeMap.putIfAbsent(scgId, new Grade()
+                        .withId(scgId)
+                        .withGrades(rs.getInt("grades")));
+
+                studentMap.putIfAbsent(stId,
+                        new Student()
+                                .withId(stId)
+                                .withName(rs.getString("name"))
+                                .withSurname("surname")
+                                .addCourse(courseMap.get(cId))
+                                .addGrades(gradeMap.get(scgId)));
+            }
+        } catch (SQLException e) {
+            log.error(e.getMessage());
+
+        }
+        return new ArrayList<>(studentMap.values());
+    }
 }
+
