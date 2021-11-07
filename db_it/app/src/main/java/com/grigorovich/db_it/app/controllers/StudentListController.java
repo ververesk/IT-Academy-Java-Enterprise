@@ -28,10 +28,6 @@ public class StudentListController extends HttpServlet {
         dispatcher.forward(request, response);
         studentList.forEach(System.out::println);
     }
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doGet(request, response);
-    }
+
 }
 
