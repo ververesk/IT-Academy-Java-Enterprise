@@ -45,6 +45,23 @@ public class Teacher {
         return this;
     }
 
+    public Teacher(int id, String name, String surname, int salary, Integer courseId, String username) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.salary = salary;
+        this.courseId = courseId;
+        this.username = username;
+    }
+
+    public Teacher(String name, String surname, int salary, Integer courseId, String username) {
+        this.name = name;
+        this.surname = surname;
+        this.salary = salary;
+        this.courseId = courseId;
+        this.username = username;
+    }
+
     public Teacher withCourse(Course course) {
         setCourse(course);
         return this;
