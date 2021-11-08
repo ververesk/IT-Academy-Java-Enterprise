@@ -28,6 +28,10 @@
     </c:forEach>
 </table>
 <a href="createCourse" >Create Course</a>
+<br>
+<br>
+<jsp:include page="homePage.jsp" />
+
 </body>
 </html>
 

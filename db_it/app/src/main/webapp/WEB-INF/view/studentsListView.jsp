@@ -38,5 +38,8 @@ pageEncoding="UTF-8"%>
     </c:forEach>
 </table>
 <a href="createStudent" >Create Student</a>
+<br>
+<br>
+<jsp:include page="homePage.jsp" />
 </body>
 </html>

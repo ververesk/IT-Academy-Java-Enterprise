@@ -22,7 +22,7 @@ public class ContextListener implements ServletContextListener {
 
         dao.get().add(new User(1, "Veronika", "1", ADMIN));
         dao.get().add(new User(2, "Slava", "1", USER));
-        dao.get().add(new User(2, "Igor", "1", TEACHER));
+        dao.get().add(new User(3, "Igor", "1", TEACHER));
 
         final ServletContext servletContext =
                 servletContextEvent.getServletContext();

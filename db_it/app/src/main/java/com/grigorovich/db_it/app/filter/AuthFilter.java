@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.lang.invoke.SwitchPoint;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static java.util.Objects.nonNull;
@@ -71,18 +72,17 @@ public class AuthFilter implements Filter {
                             final User.ROLE role)
             throws ServletException, IOException {
 
-
         if (role.equals(User.ROLE.ADMIN)) {
 
             req.getRequestDispatcher("/WEB-INF/view/homePage.jsp").forward(req, res);
 
         } else if (role.equals(User.ROLE.USER)) {
 
-            req.getRequestDispatcher("/WEB-INF/view/homePageForUser.jsp").forward(req, res);
+            req.getRequestDispatcher("/WEB-INF/view/homePageNoahSmith.jsp").forward(req, res);
 
         } else if (role.equals(User.ROLE.TEACHER)) {
 
-            req.getRequestDispatcher("/WEB-INF/view/homePageForTeacher.jsp").forward(req, res);
+            req.getRequestDispatcher("/WEB-INF/view/homePageMath.jsp").forward(req, res);
 
         } else {
 

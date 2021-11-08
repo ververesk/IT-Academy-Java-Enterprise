@@ -45,5 +45,8 @@
     </c:forEach>
 </table>
 <a href="createTeacher" >Create Teacher</a>
+<br>
+<br>
+<jsp:include page="homePage.jsp" />
 </body>
 </html>

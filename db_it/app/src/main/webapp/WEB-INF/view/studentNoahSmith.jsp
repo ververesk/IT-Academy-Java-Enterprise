@@ -25,6 +25,8 @@
         </tr>
     </c:forEach>
 </table>
-
+<br>
+<br>
+<a href="<c:url value='/logout' />">Logout</a>
 </body>
 </html>
