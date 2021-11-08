@@ -96,12 +96,7 @@ DELETE FROM public.students
 WHERE id=12;
 select name, surname, age from students;
 select * from students s ;
-commit;
-delete 
 
-select * from student_cours_grades scg ;
-
-update student_cours_grades scg set grades=8 where id=23;
 
 
 
