@@ -1,7 +1,8 @@
-package org.example.demo.app.listener;
+package com.grigorovich.db_it.app.listener;
 
-import org.example.demo.model.User;
-import org.example.demo.model.dao.UserDAO;
+import com.grigirovich.db_it.model.User;
+import com.grigirovich.db_it.model.UserDAO;
+
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -9,7 +10,11 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static org.example.demo.model.User.ROLE.*;
+import static com.grigirovich.db_it.model.User.ROLE.ADMIN;
+import static com.grigirovich.db_it.model.User.ROLE.TEACHER;
+import static com.grigirovich.db_it.model.User.ROLE.USER;
+
+
 @WebListener
 public class ContextListener implements ServletContextListener {
 
