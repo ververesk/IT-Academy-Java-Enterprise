@@ -37,11 +37,18 @@ public class Department {
     @Column(name = "min_salary")
     private int minSalary;
 
-  //  @ToString.Exclude
+    @ToString.Exclude
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE}, mappedBy = "department")
     private List<Employee> emps;
 
     public Department(String departmentName, int maxSalary, int minSalary) {
+        this.departmentName = departmentName;
+        this.maxSalary = maxSalary;
+        this.minSalary = minSalary;
+    }
+
+    public Department(int id, String departmentName, int maxSalary, int minSalary) {
+        this.id = id;
         this.departmentName = departmentName;
         this.maxSalary = maxSalary;
         this.minSalary = minSalary;

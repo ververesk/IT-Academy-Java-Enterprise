@@ -31,7 +31,7 @@ public class Employee {
 
     @Column(name = "salary")
     private int salary;
-    @ToString.Exclude
+   // @ToString.Exclude
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "department_id")
     private Department department;
