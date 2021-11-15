@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.dto.DepartmentDTO;
 import org.example.dto.EmployeeDTO;
+import org.example.entity.Department;
 import org.example.entity.Employee;
 import org.example.entity.EntityManagerHelper;
 
@@ -22,6 +23,10 @@ public class Runner {
 //        TypedQuery<Employee> query = em.createQuery("from Employee", Employee.class);
 //        query.getResultList().forEach(Runner::printWithPrefix);
 
+        //select simple
+//        TypedQuery<Employee> query = em.createQuery("select e from Employee e", Employee.class);
+//        query.getResultList().forEach(Runner::printWithPrefix);
+
         //max salary
 //        Query query = em.createQuery("Select MAX(e.salary) FROM Employee e", Integer.class);
 //        int maxSalary = (int) query.getSingleResult();
@@ -31,12 +36,8 @@ public class Runner {
 //        Query query = em.createQuery("Select e.name FROM Employee e", String.class);
 //        query.getResultList().forEach(Runner::printWithPrefix);
 
-        //select simple
-//        TypedQuery<Employee> query = em.createQuery("select e from Employee e", Employee.class);
-//        query.getResultList().forEach(Runner::printWithPrefix);
-
-        //Order BY
-//        TypedQuery<Employee> query = em.createQuery("SELECT e FROM Employee e ORDER BY e.name ASC", Employee.class);
+        //Order BY with NamedQuery
+//        TypedQuery<Employee> query = em.createNamedQuery("orderByName", Employee.class);
 //        query.getResultList().forEach(Runner::printWithPrefix);
 
         //select several fields to DTO whit filter and NamedQuery
@@ -48,9 +49,15 @@ public class Runner {
 //        Query query = em.createQuery("UPDATE Employee e SET e.salary = 1150 WHERE e.id = 7");
 //        System.out.println(query.executeUpdate());
 
-//        TypedQuery<EmployeeDTO> query = em.createQuery(
-//                "select new org.example.dto.EmployeeDTO(e.name, e.surname, e.salary, d.departmentName) from Employee e, Department d", EmployeeDTO.class);
+
+        //select left outer implicit join
+//        TypedQuery<Department> query = em.createQuery("select e.department from Employee e", Department.class);
 //        query.getResultList().forEach(Runner::printWithPrefix);
+
+        //select left outer explicit join with dto
+        TypedQuery<EmployeeDTO> query = em.createQuery(
+                "select new org.example.dto.EmployeeDTO(e.name, e.surname, e.salary, d.departmentName) from Employee e, Department d where e.department = d", EmployeeDTO.class);
+       query.getResultList().forEach(Runner::printWithPrefix);
 
 
         tx.commit();

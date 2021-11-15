@@ -1,9 +1,6 @@
 package org.example.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
@@ -15,7 +12,11 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "employees")
-@NamedQuery(name = "filterBySalary", query = "select new org.example.dto.EmployeeDTO (e.name, e.surname, e.salary) from Employee e where e.salary < :salary")
+@NamedQueries({
+        @NamedQuery(name = "filterBySalary", query = "select new org.example.dto.EmployeeDTO (e.name, e.surname, e.salary) from Employee e where e.salary < :salary"),
+        @NamedQuery(name = "orderByName", query = "SELECT e FROM Employee e ORDER BY e.name ASC")
+})
+
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +31,7 @@ public class Employee {
 
     @Column(name = "salary")
     private int salary;
-
+    @ToString.Exclude
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "department_id")
     private Department department;
@@ -42,13 +43,5 @@ public class Employee {
         this.salary = salary;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", salary=" + salary +
-                '}';
-    }
 }
+

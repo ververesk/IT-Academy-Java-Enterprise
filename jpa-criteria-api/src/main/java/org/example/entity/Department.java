@@ -1,9 +1,6 @@
 package org.example.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.CascadeType;
@@ -40,6 +37,7 @@ public class Department {
     @Column(name = "min_salary")
     private int minSalary;
 
+  //  @ToString.Exclude
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE}, mappedBy = "department")
     private List<Employee> emps;
 
@@ -57,13 +55,4 @@ public class Department {
         employee.setDepartment(this);
     }
 
-    @Override
-    public String toString() {
-        return "Department{" +
-                "id=" + id +
-                ", departmentName='" + departmentName + '\'' +
-                ", maxSalary=" + maxSalary +
-                ", minSalary=" + minSalary +
-                '}';
-    }
 }
