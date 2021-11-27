@@ -18,14 +18,14 @@ import javax.validation.constraints.Min;
 @Table(name = "math")
 public class MathCourse {
     @Id
-    @Column(name = "id", insertable = false)
+    @Column(name = "id", updatable = false)
     private int id;
     @Min(value=1, message = "must be greater than 0")
     @Max(value=11, message = "must be less than 11")
     @Column(name = "grades")
     private int grades;
 
-    @Column(name = "student_name", insertable = false)
+    @Column(name = "student_name", updatable = false)
     private String studentName;
 
 }

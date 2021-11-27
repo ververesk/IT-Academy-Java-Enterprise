@@ -4,28 +4,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MathCourse</title>
+    <title>NoahSmith</title>
 </head>
 <body>
-<h3>MathCourse</h3>
+<h3>Noah Smith</h3>
 
 <table border="1" cellpadding="5" cellspacing="1" >
     <tr>
         <th>id</th>
         <th>grades</th>
-        <th>student name</th>
-        <th>change grade</th>
+        <th>course name</th>
     </tr>
 
 
-    <c:forEach var="mathCourses" items="${requestScope.mathCourses}">
+    <c:forEach var="noahSmith" items="${requestScope.noahSmith}">
         <tr>
-            <td>"${mathCourses.id}"</td>
-            <td>"${mathCourses.grades}"</td>
-            <td>"${mathCourses.studentName}"</td>
-            <td>
-                <a href="updateGrade?id=${mathCourses.id}">Edit</a>
-            </td>
+            <td>"${noahSmith.id}"</td>
+            <td>"${noahSmith.grades}"</td>
+            <td>"${noahSmith.courseName}"</td>
         </tr>
     </c:forEach>
 </table>
@@ -35,6 +31,3 @@
 
 </body>
 </html>
-
-
-

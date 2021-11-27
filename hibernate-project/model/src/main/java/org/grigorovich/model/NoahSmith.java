@@ -14,13 +14,13 @@ import javax.persistence.Table;
 @Table(name = "NoahSmith")
 public class NoahSmith {
     @Id
-    @Column(name = "id", insertable = false)
+    @Column(name = "id", updatable = false)
     private int id;
 
-    @Column(name = "grades", insertable = false)
+    @Column(name = "grades", updatable = false)
     private int grades;
 
-    @Column(name = "course_name", insertable = false)
+    @Column(name = "course_name", updatable = false)
     private String courseName;
 }
 
