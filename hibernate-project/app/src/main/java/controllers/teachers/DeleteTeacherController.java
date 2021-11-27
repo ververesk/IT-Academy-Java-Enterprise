@@ -26,12 +26,6 @@ public class DeleteTeacherController extends HttpServlet {
             getServletContext().getRequestDispatcher("/WEB-INF/view/notfound.jsp").forward(request, response);
         }
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doGet(request, response);
-    }
 }
 
 

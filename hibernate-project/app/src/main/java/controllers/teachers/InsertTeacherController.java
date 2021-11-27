@@ -3,6 +3,7 @@ package controllers.teachers;
 
 
 
+import org.grigorovich.model.Course;
 import org.grigorovich.model.Teacher;
 import repositories.RepositoryFactory;
 import repositories.TeacherRepository;
@@ -29,10 +30,9 @@ public class InsertTeacherController extends HttpServlet {
             String name = (String) request.getParameter("name");
             String surname = (String) request.getParameter("surname");
             int salary = Integer.parseInt(request.getParameter("salary"));
-            Integer courseId = Integer.parseInt(request.getParameter("courseId"));
             String username = (String) request.getParameter("username");
-      //      Teacher teacher = new Teacher(name, surname, salary, courseId, username);
-     //       repository.insert(teacher);
+            Teacher teacher = new Teacher(name, surname, salary, username);
+            repository.insert(teacher);
             response.sendRedirect(request.getContextPath() + "/teacherList");
         } catch (Exception ex) {
             getServletContext().getRequestDispatcher("/WEB-INF/view/teacherInsertView.jsp").forward(request, response);

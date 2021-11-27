@@ -1,5 +1,6 @@
 package repositories;
 
+import org.grigorovich.model.Student;
 import org.grigorovich.model.Teacher;
 
 import javax.persistence.EntityManager;
@@ -68,5 +69,16 @@ public class TeacherRepositoryJPA extends AbstractRepositoryJpa<Teacher>implemen
         Double avgSalaries = (Double) query.getSingleResult();
         String avgSalariesRound = String.format("%.2f",avgSalaries);
         return avgSalariesRound;
+    }
+
+    @Override
+    public void remove(int id) {
+        EntityManager em = helper.getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("delete from Teacher where id=:tId");
+        query.setParameter("tId", id);
+        query.executeUpdate();
+        em.getTransaction().commit();
+        em.close();
     }
 }
