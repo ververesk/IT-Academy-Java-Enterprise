@@ -3,6 +3,7 @@ package repositories;
 import org.grigorovich.model.Teacher;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 public class TeacherRepositoryJPA extends AbstractRepositoryJpa<Teacher>implements TeacherRepository{
@@ -48,5 +49,24 @@ public class TeacherRepositoryJPA extends AbstractRepositoryJpa<Teacher>implemen
         }
         em.getTransaction().commit();
         em.close();
+    }
+
+    @Override
+    public Long sumTeacherSalary() {
+        EntityManager em = helper.getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("Select sum(t.salary) FROM Teacher t", Long.class);
+        Long sumSalaries = (Long) query.getSingleResult();
+        return sumSalaries;
+    }
+
+    @Override
+    public String avgTeacherSalary() {
+        EntityManager em = helper.getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("Select avg(t.salary) FROM Teacher t", Double.class);
+        Double avgSalaries = (Double) query.getSingleResult();
+        String avgSalariesRound = String.format("%.2f",avgSalaries);
+        return avgSalariesRound;
     }
 }
