@@ -14,7 +14,7 @@ public class Runner {
     public static void main(String[] args) {
         List<Student> students = repository.findAll();
         System.out.println(students);
-        Optional<Student> query=repository.find(1);
+        Student query=repository.find(1);
         System.out.println(query);
 
 

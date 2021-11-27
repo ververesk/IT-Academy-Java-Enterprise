@@ -1,6 +1,7 @@
 package repositories;
 
 import org.grigorovich.model.Student;
+import org.hibernate.query.Query;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -47,6 +48,16 @@ public class StudentRepositoryJPA extends AbstractRepositoryJpa<Student> impleme
         if (student.getId() != 0) {
             em.merge(student);
         }
+        em.getTransaction().commit();
+        em.close();
+    }
+    @Override
+    public void remove(int id) {
+        EntityManager em = helper.getEntityManager();
+        em.getTransaction().begin();
+        Query<Student> query = (Query<Student>) em.createQuery("delete from Student where id=:stId");
+        query.setParameter("stId", id);
+        query.executeUpdate();
         em.getTransaction().commit();
         em.close();
     }

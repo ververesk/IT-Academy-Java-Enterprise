@@ -2,6 +2,7 @@ package repositories;
 
 import exception.DatabaseException;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.query.Query;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -57,13 +58,13 @@ public abstract class AbstractRepositoryJpa<T> implements Repository<T> {
     }
 
     @Override
-    public Optional<T> find(int id) {
+    public T find(int id) {
         EntityManager em = helper.getEntityManager();
         em.getTransaction().begin();
         T entity = em.find(getType(), id);
         em.getTransaction().commit();
         em.close();
-        return Optional.ofNullable(entity);
+        return entity;
     }
 
     private Class<T> getType() {
@@ -81,10 +82,6 @@ public abstract class AbstractRepositoryJpa<T> implements Repository<T> {
 
     @Override
     public void remove(int id) {
-        EntityManager em = helper.getEntityManager();
-        em.getTransaction().begin();
-        em.remove(id);
-        em.getTransaction().commit();
-        em.close();
+
     }
 }
