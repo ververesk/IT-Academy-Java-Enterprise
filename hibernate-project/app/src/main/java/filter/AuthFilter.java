@@ -79,11 +79,11 @@ public class AuthFilter implements Filter {
 
         } else if (role.equals(User.ROLE.USER)) {
 
-            req.getRequestDispatcher("/WEB-INF/view/homePageNoahSmith.jsp").forward(req, res);
+            req.getRequestDispatcher("/WEB-INF/view/homePageMath.jsp").forward(req, res);
 
         } else if (role.equals(User.ROLE.TEACHER)) {
 
-            req.getRequestDispatcher("/WEB-INF/view/homePageMath.jsp").forward(req, res);
+            req.getRequestDispatcher("/WEB-INF/view/homePageNoahSmith.jsp").forward(req, res);
 
         } else {
 
