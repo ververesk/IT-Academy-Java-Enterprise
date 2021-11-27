@@ -26,9 +26,10 @@
         <property name="hibernate.enable_lazy_load_no_trans">true</property>
 
         <mapping class="org.grigorovich.model.Course"/>
-        <mapping class="org.grigorovich.model.Math"/>
+        <mapping class="org.grigorovich.model.MathCourse"/>
         <mapping class="org.grigorovich.model.Student"/>
         <mapping class="org.grigorovich.model.Teacher"/>
+        <mapping class="org.grigorovich.model.NoahSmith"/>
 
     </session-factory>
 

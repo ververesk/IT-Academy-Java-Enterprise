@@ -2,7 +2,9 @@ package repositories;
 
 import org.grigorovich.model.Student;
 
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class StudentRepositoryJPA extends AbstractRepositoryJpa<Student> implements StudentRepository {
     private static volatile StudentRepositoryJPA instance;
@@ -25,6 +27,27 @@ public class StudentRepositoryJPA extends AbstractRepositoryJpa<Student> impleme
     @Override
     protected TypedQuery<Student> findAllQuery() {
         return helper.getEntityManager()
-                .createQuery("select s.id , s.name, s.surname, s.age, s.username from Student s", Student.class);
+                .createQuery("from Student", Student.class);
+    }
+
+    @Override
+    public void insert(Student student) {
+        EntityManager em = helper.getEntityManager();
+        em.getTransaction().begin();
+        if (student.getId() == 0) {
+            em.persist(student);
+        }
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public void update(Student student) {
+        EntityManager em = helper.getEntityManager();
+        em.getTransaction().begin();
+        if (student.getId() != 0) {
+            em.merge(student);
+        }
+        em.getTransaction().commit();
+        em.close();
     }
 }

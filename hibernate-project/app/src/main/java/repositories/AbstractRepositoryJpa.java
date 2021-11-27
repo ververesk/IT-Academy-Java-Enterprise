@@ -18,7 +18,7 @@ public abstract class AbstractRepositoryJpa<T> implements Repository<T> {
     protected abstract TypedQuery<T> findAllQuery();
 
     @Override
-    public List <T> findAll() {
+    public List<T> findAll() {
         List<T> entities = new ArrayList<>();
         EntityManager em = null;
         try {
@@ -68,7 +68,7 @@ public abstract class AbstractRepositoryJpa<T> implements Repository<T> {
 
     private Class<T> getType() {
         ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
-        return  (Class) type.getActualTypeArguments()[0];
+        return (Class) type.getActualTypeArguments()[0];
     }
 
     @Override
@@ -76,10 +76,15 @@ public abstract class AbstractRepositoryJpa<T> implements Repository<T> {
     }
 
     @Override
-    public void insert(Object entity) {
+    public void insert(T entity) {
     }
 
     @Override
     public void remove(int id) {
+        EntityManager em = helper.getEntityManager();
+        em.getTransaction().begin();
+        em.remove(id);
+        em.getTransaction().commit();
+        em.close();
     }
 }

@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Entity
 @Table(name = "math")
-public class Math {
+public class MathCourse {
     @Id
     @Column(name = "id", insertable = false)
     private int id;

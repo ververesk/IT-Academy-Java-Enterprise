@@ -25,11 +25,11 @@ public class RepositoryFactory {
         return StudentRepositoryJPA.getInstance();
     }
 
- //   public static CourseRepository getCourseRepository() {
- //       return CourseRepositoryPostgres.getInstance(datasource);
- //   }
+    public static CourseRepository getCourseRepository() {return CourseRepositoryJPA.getInstance();}
 
-  //  public static TeacherRepository getTeacherRepository() {
- //       return TeacherRepositoryPostgres.getInstance(datasource);
- //   }
+    public static TeacherRepository getTeacherRepository() {return TeacherRepositoryJPA.getInstance();}
+
+    public static MathRepository getMathRepository() {return MathRepositoryJPA.getInstance();}
+
+    public static NoahSmithRepository getNoahSmithRepository() {return NoahSmithRepositoryJPA.getInstance();}
 }
