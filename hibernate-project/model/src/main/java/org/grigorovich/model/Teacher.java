@@ -42,6 +42,15 @@ public class Teacher {
         this.username = username;
     }
 
+    public Teacher(int id, String name, String surname, int salary, String username) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.salary = salary;
+        this.username = username;
+    }
+
+
     public Teacher withId(int id) {
         setId(id);
         return this;

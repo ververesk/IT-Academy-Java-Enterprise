@@ -38,10 +38,9 @@ public class UpdateTeacherController extends HttpServlet {
         String name = (String) request.getParameter("name");
         String surname = (String) request.getParameter("surname");
         int salary = Integer.parseInt(request.getParameter("salary"));
-        Integer courseId = Integer.parseInt(request.getParameter("courseId"));
         String username = (String) request.getParameter("username");
-   //     Teacher teacher = new Teacher(id, name, surname, salary, courseId, username);
-   //     repository.update(teacher);
+        Teacher teacher = new Teacher(id, name, surname, salary, username);
+        repository.update(teacher);
         response.sendRedirect(request.getContextPath() + "/teacherList");
     }
 }
