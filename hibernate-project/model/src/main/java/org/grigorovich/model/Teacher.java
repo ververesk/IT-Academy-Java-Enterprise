@@ -19,11 +19,9 @@ public class Teacher {
     private int id;
 
     @Column(name = "name")
-    @Size(min=2, message="name must be min 2 symbols")
     private String name;
 
     @Column(name = "surname")
-    @NotBlank(message="surname is required field")
     private String surname;
 
     @Column(name = "salary")

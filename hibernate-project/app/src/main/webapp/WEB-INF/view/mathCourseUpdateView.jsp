@@ -22,7 +22,8 @@
             </tr>
             <tr>
                 <td>grades</td>
-                <td><input type="text" name="grades" value="${mathCourse.grades}" /></td>
+                <td><input type="text" name="grades" value="${mathCourse.grades}" />
+                    <form:errors path="grades"/></td>
             </tr>
             <tr>
                 <td>studentName</td>

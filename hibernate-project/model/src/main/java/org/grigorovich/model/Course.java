@@ -21,7 +21,6 @@ public class Course implements Serializable {
     private int courseId;
 
     @Column(name = "course_name")
-    @NotBlank(message="surname is required field")
     private String courseName;
 
     @ToString.Exclude
