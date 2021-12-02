@@ -37,6 +37,13 @@
           c:id="2" c:type="dog" c:_2="russel" p:abilityToTrain="false">
     </bean>
 
+    <bean id="reks" class="org.grigorovich.spring.model.Dog">
+        <constructor-arg index="0" value="3"/>
+        <constructor-arg name="type" value="dog"/>
+        <constructor-arg name="name" value="reks"/>
+        <constructor-arg name="abilityToTrain" value="false"/>
+    </bean>
+
     <bean id="veronika" class="org.grigorovich.spring.model.Owner">
         <property name="id" value="1"/>
         <property name="name" value="veronika"/>
@@ -76,6 +83,13 @@
         <entry key="IV" value="40"/>
     </util:map>
 
+    <util:map id="costOfThirdOwner">
+        <entry key="I" value="60"/>
+        <entry key="II" value="80"/>
+        <entry key="III" value="70"/>
+        <entry key="IV" value="40"/>
+    </util:map>
+
     <bean id="veronikaHome" class="org.grigorovich.spring.model.Home">
         <constructor-arg name="id" value="1"/>
         <constructor-arg name="square" value="50"/>
@@ -87,5 +101,17 @@
         <constructor-arg name="square" value="150"/>
         <property name="owner" ref="dima"/>
     </bean>
+
+<!--Some SpEL demonstration (static/non-static methods)-->
+    <bean id="thirdHome" class="org.grigorovich.spring.model.Home">
+        <property name="id" value="#{ T(java.lang.Math).random() * 100.0 }"/>
+        <property name="square" value="#{new java.util.Random().nextInt(200)}"/>
+        <property name="owner">
+            <bean class="org.grigorovich.spring.model.Owner" p:id="#{ T(java.lang.Math).random() * 100.0 }"
+                  p:name="thirdOwner" p:listPets="#{reks}" p:quarterPetCost-ref="costOfThirdOwner"/>
+        </property>
+    </bean>
+
+
 
 </beans>
