@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method="init" default-destroy-method="destroy">
+    <!--Injection by properties-->
+    <bean id="shura" class="org.grigorovich.spring.model.Cat">
+        <property name="id" value="1"/>
+        <property name="type" value="cat"/>
+        <property name="name" value="shura"/>
+        <property name="abilityToCatchMice" value="true"/>
+    </bean>
+
+    <bean id="murka" class="org.grigorovich.spring.model.Cat">
+        <property name="id" value="2"/>
+        <property name="type" value="cat"/>
+        <property name="name" value="murka"/>
+        <property name="abilityToCatchMice" value="false"/>
+    </bean>
+    <!--Injection by constructor-->
+    <bean id="mishelle" class="org.grigorovich.spring.model.Dog">
+        <constructor-arg index="0" value="1"/>
+        <constructor-arg name="type" value="dog"/>
+        <constructor-arg name="name" value="mishelle"/>
+        <constructor-arg name="abilityToTrain" value="true"/>
+    </bean>
+
+    <bean id="veronika" class="org.grigorovich.spring.model.Owner">
+        <property name="id" value="1"/>
+        <property name="name" value="veronika"/>
+        <property name="listPets">
+            <list>
+                <ref bean="mishelle"/>
+                <ref bean="shura"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="dima" class="org.grigorovich.spring.model.Owner">
+        <property name="id" value="2"/>
+        <property name="name" value="dima"/>
+        <property name="listPets">
+            <list>
+                <ref bean="murka"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="veronikaHome" class="org.grigorovich.spring.model.Home">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="square" value="50"/>
+        <property name="owner" ref="veronika"/>
+    </bean>
+
+    <bean id="dimaHome" class="org.grigorovich.spring.model.Home">
+        <constructor-arg name="id" value="2"/>
+        <constructor-arg name="square" value="150"/>
+        <property name="owner" ref="dima"/>
+    </bean>
+
+</beans>
