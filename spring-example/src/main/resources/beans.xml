@@ -46,6 +46,7 @@
                 <ref bean="shura"/>
             </list>
         </property>
+        <property name="quarterPetCost" ref="costOfVeronika"/>
     </bean>
 
     <!--list pets-->
@@ -58,7 +59,22 @@
         <property name="id" value="2"/>
         <property name="name" value="dima"/>
         <property name="listPets" ref="dima's pets"/>
+        <property name="quarterPetCost" ref="costOfDima"/>
     </bean>
+
+    <util:map id="costOfVeronika">
+        <entry key="I" value="80"/>
+        <entry key="II" value="90"/>
+        <entry key="III" value="70"/>
+        <entry key="IV" value="60"/>
+    </util:map>
+
+    <util:map id="costOfDima">
+        <entry key="I" value="60"/>
+        <entry key="II" value="80"/>
+        <entry key="III" value="70"/>
+        <entry key="IV" value="40"/>
+    </util:map>
 
     <bean id="veronikaHome" class="org.grigorovich.spring.model.Home">
         <constructor-arg name="id" value="1"/>
