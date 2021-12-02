@@ -15,7 +15,8 @@ public class Start {
 
         Home veronikaHome = ctx.getBean("veronikaHome",Home.class);
         System.out.println(veronikaHome);
-
+        Home dimaHome = ctx.getBean("dimaHome",Home.class);
+        System.out.println(dimaHome);
 
 //        Dog dog = new Dog(1,"dog","gav",false);
 //        System.out.println(dog);

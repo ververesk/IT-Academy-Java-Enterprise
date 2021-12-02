@@ -26,4 +26,14 @@ public class Cat extends Pet{
             System.out.println(this.name + " you should try");
         }
     }
+
+    public void init() {
+        System.out.println(this.getClass().getSimpleName() + ": init method");
+        goodAnimal();
+    }
+
+
+    public void destroy() {
+        System.out.println(this.getClass().getSimpleName() + ": destroy method");
+    }
 }

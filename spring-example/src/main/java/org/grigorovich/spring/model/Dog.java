@@ -17,6 +17,10 @@ public class Dog extends Pet{
         this.abilityToTrain = abilityToTrain;
     }
 
+    public Dog(int id, String type, String name) {
+        super(id, type, name);
+    }
+
 
     @Override
     public void goodAnimal() {
