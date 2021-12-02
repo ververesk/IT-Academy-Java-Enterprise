@@ -16,4 +16,13 @@ public class Home {
         this.id = id;
         this.square = square;
     }
+
+    public void init() {
+        System.out.println(this.getClass().getSimpleName() + ": init method");
+    }
+
+
+    public void destroy() {
+        System.out.println(this.getClass().getSimpleName() + ": destroy method");
+    }
 }

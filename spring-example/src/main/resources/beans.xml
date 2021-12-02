@@ -53,10 +53,10 @@
         <property name="owner" ref="veronika"/>
     </bean>
 
-    <bean id="dimaHome" class="org.grigorovich.spring.model.Home">
+  <!--  <bean id="dimaHome" class="org.grigorovich.spring.model.Home">
         <constructor-arg name="id" value="2"/>
         <constructor-arg name="square" value="150"/>
         <property name="owner" ref="dima"/>
-    </bean>
+    </bean> -->
 
 </beans>
