@@ -3,9 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd"
        default-init-method="init" default-destroy-method="destroy">
+
     <!--Injection by properties-->
     <bean id="shura" class="org.grigorovich.spring.model.Cat">
         <property name="id" value="1"/>
@@ -20,6 +23,7 @@
         <property name="name" value="murka"/>
         <property name="abilityToCatchMice" value="false"/>
     </bean>
+
     <!--Injection by constructor-->
     <bean id="mishelle" class="org.grigorovich.spring.model.Dog">
         <constructor-arg index="0" value="1"/>
@@ -30,7 +34,7 @@
 
     <!--schema/c and schema/p-->
     <bean id="russel" class="org.grigorovich.spring.model.Dog"
-    c:id="2" c:type="dog" c:_2="russel" p:abilityToTrain="false">
+          c:id="2" c:type="dog" c:_2="russel" p:abilityToTrain="false">
     </bean>
 
     <bean id="veronika" class="org.grigorovich.spring.model.Owner">
@@ -44,15 +48,16 @@
         </property>
     </bean>
 
+    <!--list pets-->
+    <util:list id="dima's pets">
+        <ref bean="murka"/>
+        <ref bean="russel"/>
+    </util:list>
+
     <bean id="dima" class="org.grigorovich.spring.model.Owner">
         <property name="id" value="2"/>
         <property name="name" value="dima"/>
-        <property name="listPets">
-            <list>
-                <ref bean="murka"/>
-                <ref bean="russel"/>
-            </list>
-        </property>
+        <property name="listPets" ref="dima's pets"/>
     </bean>
 
     <bean id="veronikaHome" class="org.grigorovich.spring.model.Home">
@@ -61,7 +66,7 @@
         <property name="owner" ref="veronika"/>
     </bean>
 
-   <bean id="dimaHome" class="org.grigorovich.spring.model.Home">
+    <bean id="dimaHome" class="org.grigorovich.spring.model.Home">
         <constructor-arg name="id" value="2"/>
         <constructor-arg name="square" value="150"/>
         <property name="owner" ref="dima"/>
