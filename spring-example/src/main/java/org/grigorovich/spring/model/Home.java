@@ -3,6 +3,7 @@ package org.grigorovich.spring.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.grigorovich.spring.qualifiers.CustomStringQualifier;
 import org.grigorovich.spring.qualifiers.IgorQualifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,7 +16,8 @@ public class Home {
     private int square;
     @Autowired
  //   @Qualifier("123")
-    @IgorQualifier
+ //   @IgorQualifier
+    @CustomStringQualifier(value = "veronika")
     private Owner owner;
  //   private Owner igor;
 
