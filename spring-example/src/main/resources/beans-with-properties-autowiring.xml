@@ -29,7 +29,8 @@
     </bean>
 
     <bean id="veronika" class="org.grigorovich.spring.model.Owner" primary="true">
-        <qualifier value="456"/>
+<!--        <qualifier value="456"/>-->
+        <qualifier type="org.grigorovich.spring.qualifiers.VeronikaQualifier"/>
         <property name="id" value="${veronika.id}"/>
         <property name="name" value="${veronika.name}"/>
         <property name="listPets" >
@@ -41,7 +42,8 @@
     </bean>
 
     <bean id="igor" class="org.grigorovich.spring.model.Owner">
-        <qualifier value="123"/>
+<!--        <qualifier value="123"/>-->
+        <qualifier type="org.grigorovich.spring.qualifiers.IgorQualifier"/>
         <property name="id" value="${igor.id}"/>
         <property name="name" value="${igor.name}"/>
         <property name="listPets" >
