@@ -13,6 +13,9 @@ public class StartWithXMLProperties {
         Owner veronika = ctx.getBean("veronika", Owner.class);
         System.out.println(veronika);
 
+        Home veronikaHome  = ctx.getBean("veronikaHome", Home.class);
+        System.out.println(veronikaHome);
+
 
     }
 }

@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
        default-init-method="init" default-destroy-method="destroy">
 
-    <context:property-placeholder location="cat.properties, owner.properties, home.properties"/>
+    <context:property-placeholder location="cat.properties, owner.properties, home.properties, dog.properties"/>
 
 
     <bean id="shura" class="org.grigorovich.spring.model.Cat">
@@ -19,6 +19,13 @@
         <property name="type" value="${shura.type}"/>
         <property name="name" value="${shura.name}"/>
         <property name="abilityToCatchMice" value="${shura.abilityToCatchMice}"/>
+    </bean>
+
+    <bean id="chappi" class="org.grigorovich.spring.model.Dog">
+        <property name="id" value="${chappi.id}"/>
+        <property name="type" value="${chappi.type}"/>
+        <property name="name" value="${chappi.name}"/>
+        <property name="abilityToTrain" value="${chappi.abilityToTrain}"/>
     </bean>
 
     <bean id="veronika" class="org.grigorovich.spring.model.Owner">
@@ -32,9 +39,25 @@
         <property name="quarterPetCost" value="#{${veronika.quarterPetCost}}"/>
     </bean>
 
-    <bean id="veronikaHome" class="org.grigorovich.spring.model.Home">
+    <bean id="igor" class="org.grigorovich.spring.model.Owner">
+        <property name="id" value="${igor.id}"/>
+        <property name="name" value="${igor.name}"/>
+        <property name="listPets" >
+            <list>
+                <ref bean="chappi"/>
+            </list>
+        </property>
+        <property name="quarterPetCost" value="#{${igor.quarterPetCost}}"/>
+    </bean>
+
+  <!--  <bean id="veronikaHome" class="org.grigorovich.spring.model.Home">
         <property name="id" value="${veronikaHome.id}"/>
         <property name="square" value="${veronikaHome.square}"/>
         <property name="owner" ref="veronika"/>
+    </bean> -->
+
+    <bean id="igorHome" class="org.grigorovich.spring.model.Home" autowire="byName">
+        <property name="id" value="${igorHome.id}"/>
+        <property name="square" value="${igorHome.square}"/>
     </bean>
 </beans>
