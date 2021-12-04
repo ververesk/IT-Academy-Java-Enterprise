@@ -12,7 +12,7 @@
        default-init-method="init" default-destroy-method="destroy"  default-autowire="byType">
 
     <context:property-placeholder location="cat.properties, owner.properties, home.properties, dog.properties"/>
-
+    <context:annotation-config/>
 
     <bean id="shura" class="org.grigorovich.spring.model.Cat">
         <property name="id" value="${shura.id}"/>
@@ -29,6 +29,7 @@
     </bean>
 
     <bean id="veronika" class="org.grigorovich.spring.model.Owner" primary="true">
+        <qualifier value="456"/>
         <property name="id" value="${veronika.id}"/>
         <property name="name" value="${veronika.name}"/>
         <property name="listPets" >
@@ -40,6 +41,7 @@
     </bean>
 
     <bean id="igor" class="org.grigorovich.spring.model.Owner">
+        <qualifier value="123"/>
         <property name="id" value="${igor.id}"/>
         <property name="name" value="${igor.name}"/>
         <property name="listPets" >
@@ -61,8 +63,8 @@
         <property name="square" value="${igorHome.square}"/>
     </bean>
     -->
-    <bean id="someHome" class="org.grigorovich.spring.model.Home"
-          c:id="14" c:square="123">
+    <bean id="someHome" class="org.grigorovich.spring.model.Home" autowire="byName" c:id="14" c:square="123">
+ <!--   <bean id="someHome" class="org.grigorovich.spring.model.Home" -->
     </bean>
 
 </beans>

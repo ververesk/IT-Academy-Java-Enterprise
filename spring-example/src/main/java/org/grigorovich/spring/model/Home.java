@@ -3,6 +3,8 @@ package org.grigorovich.spring.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 @Data
 @NoArgsConstructor
@@ -10,6 +12,8 @@ import lombok.NoArgsConstructor;
 public class Home {
     private int id;
     private int square;
+    @Autowired
+    @Qualifier("123")
     private Owner owner;
  //   private Owner igor;
 
