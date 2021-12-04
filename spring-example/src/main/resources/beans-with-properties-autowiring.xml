@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
-       default-init-method="init" default-destroy-method="destroy">
+       default-init-method="init" default-destroy-method="destroy"  default-autowire="byType">
 
     <context:property-placeholder location="cat.properties, owner.properties, home.properties, dog.properties"/>
 
@@ -28,7 +28,7 @@
         <property name="abilityToTrain" value="${chappi.abilityToTrain}"/>
     </bean>
 
-    <bean id="veronika" class="org.grigorovich.spring.model.Owner">
+    <bean id="veronika" class="org.grigorovich.spring.model.Owner" primary="true">
         <property name="id" value="${veronika.id}"/>
         <property name="name" value="${veronika.name}"/>
         <property name="listPets" >
@@ -56,8 +56,13 @@
         <property name="owner" ref="veronika"/>
     </bean> -->
 
-    <bean id="igorHome" class="org.grigorovich.spring.model.Home" autowire="byName">
+<!--    <bean id="igorHome" class="org.grigorovich.spring.model.Home" autowire="byName">
         <property name="id" value="${igorHome.id}"/>
         <property name="square" value="${igorHome.square}"/>
     </bean>
+    -->
+    <bean id="someHome" class="org.grigorovich.spring.model.Home"
+          c:id="14" c:square="123">
+    </bean>
+
 </beans>

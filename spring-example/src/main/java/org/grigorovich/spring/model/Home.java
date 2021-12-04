@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 public class Home {
     private int id;
     private int square;
-    private Owner igor;
+    private Owner owner;
  //   private Owner igor;
 
     public Home(int id, int square) {

@@ -11,8 +11,11 @@ public class StartWithXMLPropertiesAutowiring {
         ctx.registerShutdownHook();
 
 
-        Home igorHome  = ctx.getBean("igorHome", Home.class);
-        System.out.println(igorHome);
+//        Home igorHome = ctx.getBean("igorHome", Home.class);
+//        System.out.println(igorHome);
+
+        Home someHome = ctx.getBean("someHome", Home.class);
+        System.out.println(someHome);
 
 
     }
