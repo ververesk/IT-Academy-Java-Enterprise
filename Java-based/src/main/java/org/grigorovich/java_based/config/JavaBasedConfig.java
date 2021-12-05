@@ -1,6 +1,7 @@
 package org.grigorovich.java_based.config;
 
 import org.grigorovich.java_based.model.*;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
@@ -33,12 +34,12 @@ public class JavaBasedConfig {
 
 
     @Bean
-    public Owner veronika(Cat murka, Dog mishelle, @Value("${veronika.id}") int id,
-                         @Value("${veronika.name}") String name,
-                         @Value("#{${veronika.quarterPetCost}}") Map<String, Integer> quarterPetCost
+    public Owner veronika(@Qualifier("murka") Cat cat, Dog mishelle, @Value("${veronika.id}") int id,
+                          @Value("${veronika.name}") String name,
+                          @Value("#{${veronika.quarterPetCost}}") Map<String, Integer> quarterPetCost
     ) {
         Owner veronika = new Owner(id, name, null, null);
-        veronika.setListPets(List.of(murka, mishelle));
+        veronika.setListPets(List.of(cat, mishelle));
         veronika.setQuarterPetCost(quarterPetCost);
         return veronika;
     }
@@ -52,9 +53,9 @@ public class JavaBasedConfig {
     }
 
     @Bean
-    public Home home(Owner veronika) {
+    public Home home(@Qualifier("veronika") Owner owner) {
         Home home = new Home(1, 150, null);
-        home.setOwner(veronika);
+        home.setOwner(owner);
         return home;
     }
 }
