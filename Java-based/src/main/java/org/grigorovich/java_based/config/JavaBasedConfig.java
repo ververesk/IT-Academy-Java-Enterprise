@@ -1,6 +1,7 @@
 package org.grigorovich.java_based.config;
 
 import org.grigorovich.java_based.model.*;
+import org.grigorovich.java_based.qualifiers.IgorQualifier;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -45,6 +46,7 @@ public class JavaBasedConfig {
     }
 
     @Bean
+    @IgorQualifier
     public Owner igor() {
         Owner igor = new Owner(2, "igor", null, null);
         igor.setListPets(List.of(barsik()));
@@ -53,7 +55,7 @@ public class JavaBasedConfig {
     }
 
     @Bean
-    public Home home(@Qualifier("veronika") Owner owner) {
+    public Home home(@IgorQualifier Owner owner) {
         Home home = new Home(1, 150, null);
         home.setOwner(owner);
         return home;
