@@ -1,17 +1,20 @@
 package org.grigorovich.java_based.config;
 
 import org.grigorovich.java_based.model.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
-
+@PropertySource({"classpath:cat.properties", "classpath:owner.properties", "classpath:dog.properties"})
 public class JavaBasedConfig {
 
     @Bean
-    public Cat murka() {
-        Cat murka = new Cat(1, "cat", "murka", true);
+    public Cat murka(@Value("${murka.id}") int id, @Value("${murka.type}") String type,
+    @Value("${murka.name}") String name, @Value("${murka.abilityToCatchMice}") boolean abilityToCatchMice) {
+        Cat murka = new Cat(id, type, name, abilityToCatchMice);
         return murka;
     }
 
@@ -22,17 +25,21 @@ public class JavaBasedConfig {
     }
 
     @Bean
-    public Dog mishelle() {
-        Dog mishelle = new Dog(1, "dog", "mishelle", true);
+    public Dog mishelle(@Value("${mishelle.id}") int id, @Value("${mishelle.type}") String type,
+                        @Value("${mishelle.name}") String name, @Value("${mishelle.abilityToTrain}") boolean abilityToTrain) {
+        Dog mishelle = new Dog(id, type, name, abilityToTrain);
         return mishelle;
     }
 
 
     @Bean
-    public Owner veronika(Cat murka, Dog mishelle) {
-        Owner veronika = new Owner(1, "veronika", null, null);
+    public Owner veronika(Cat murka, Dog mishelle, @Value("${veronika.id}") int id,
+                         @Value("${veronika.name}") String name,
+                         @Value("#{${veronika.quarterPetCost}}") Map<String, Integer> quarterPetCost
+    ) {
+        Owner veronika = new Owner(id, name, null, null);
         veronika.setListPets(List.of(murka, mishelle));
-        veronika.setQuarterPetCost(Map.of("I", 70, "II", 85, "III", 90, "IV", 67));
+        veronika.setQuarterPetCost(quarterPetCost);
         return veronika;
     }
 
