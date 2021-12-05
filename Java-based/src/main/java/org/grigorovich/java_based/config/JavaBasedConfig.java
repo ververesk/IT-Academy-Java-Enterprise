@@ -1,11 +1,9 @@
 package org.grigorovich.java_based.config;
 
-import org.grigorovich.java_based.model.Cat;
-import org.grigorovich.java_based.model.Dog;
-import org.grigorovich.java_based.model.Home;
-import org.grigorovich.java_based.model.Owner;
+import org.grigorovich.java_based.model.*;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -29,10 +27,11 @@ public class JavaBasedConfig {
         return mishelle;
     }
 
+
     @Bean
-    public Owner veronika() {
+    public Owner veronika(Cat murka, Dog mishelle) {
         Owner veronika = new Owner(1, "veronika", null, null);
-        veronika.setListPets(List.of(murka(), mishelle()));
+        veronika.setListPets(List.of(murka, mishelle));
         veronika.setQuarterPetCost(Map.of("I", 70, "II", 85, "III", 90, "IV", 67));
         return veronika;
     }
@@ -46,9 +45,9 @@ public class JavaBasedConfig {
     }
 
     @Bean
-    public Home home() {
+    public Home home(Owner veronika) {
         Home home = new Home(1, 150, null);
-        home.setOwner(veronika());
+        home.setOwner(veronika);
         return home;
     }
 }
