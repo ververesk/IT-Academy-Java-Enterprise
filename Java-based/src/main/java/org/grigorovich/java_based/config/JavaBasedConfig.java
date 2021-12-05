@@ -5,12 +5,14 @@ import org.grigorovich.java_based.qualifiers.IgorQualifier;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 
 
 import java.util.List;
 import java.util.Map;
-@PropertySource({"classpath:cat.properties", "classpath:owner.properties", "classpath:dog.properties"})
+
+@Import({CatConfig.class, DogConfig.class, OwnerConfig.class})
 public class JavaBasedConfig {
 
     @Bean
