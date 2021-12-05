@@ -21,8 +21,9 @@ public class Home {
     private int id;
     @Value("${veronikaHome.square}")
     private int square;
-    @Autowired
-    @VeronikaQualifier //указала какой именно бин нам нужен
+  //  @Autowired
+  //  @VeronikaQualifier ну или такой вариант
+ //   @Qualifier("igor") //указала какой именно бин нам нужен
     private Owner owner;
 
     public Home(int id, int square) {
@@ -30,5 +31,9 @@ public class Home {
         this.square = square;
     }
 
-
+    @Autowired
+    @Qualifier("igor")
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
 }
