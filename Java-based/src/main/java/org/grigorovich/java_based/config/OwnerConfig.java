@@ -4,6 +4,7 @@ import org.grigorovich.java_based.model.Cat;
 import org.grigorovich.java_based.model.Dog;
 import org.grigorovich.java_based.model.Owner;
 import org.grigorovich.java_based.qualifiers.IgorQualifier;
+import org.grigorovich.java_based.qualifiers.VeronikaQualifier;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,7 @@ import java.util.Map;
 @PropertySource({"classpath:owner.properties"})
 public class OwnerConfig {
     @Bean
+    @VeronikaQualifier
     public Owner veronika(@Qualifier("murka") Cat cat, Dog mishelle, @Value("${veronika.id}") int id,
                           @Value("${veronika.name}") String name,
                           @Value("#{${veronika.quarterPetCost}}") Map<String, Integer> quarterPetCost
