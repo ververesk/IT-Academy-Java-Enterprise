@@ -8,7 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class StartWithJavaBasedConfig {
     public static void main(String[] args) {
-        ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(JavaBasedConfig.class);
+        ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext("org.grigorovich.java_based");
         ctx.registerShutdownHook();
 
 
