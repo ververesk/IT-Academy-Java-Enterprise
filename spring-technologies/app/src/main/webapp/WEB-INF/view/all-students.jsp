@@ -17,6 +17,9 @@
             <th>surname</th>
             <th>age</th>
             <th>username</th>
+            <th>courses</th>
+            <th>courses</th>
+            <th>courses</th>
     </tr>
     <c:forEach  var="st" items="${allSt}">
         <c:url var="updateButton" value="/updateStudent">
@@ -41,6 +44,10 @@
             <td>${st.surname}</td>
             <td>${st.age}</td>
             <td>${st.username}</td>
+            <c:set value="${st.courseList}" scope="page" var="courseList"/>
+            <c:forEach items="${courseList}" var="course">
+                <td><c:out value="${empty course ? '---' : course.courseName}"/></td>
+            </c:forEach>
 
         </tr>
     </c:forEach>

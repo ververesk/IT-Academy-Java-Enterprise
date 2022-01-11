@@ -8,16 +8,19 @@
 </head>
 <body>
 <h2>Student info</h2>
-<form:form action="saveStudent" modelAttribute="student">
+<form:form action="saveStudent" modelAttribute="student" method="post">
     <form:hidden path="id"></form:hidden>
     NAME   <form:input path="name"/>
+    <form:errors path="name"/>
     <br><br>
     SURNAME   <form:input path="surname"/>
+    <form:errors path="surname"/>
     <br><br>
     AGE   <form:input path="age"/>
     <br><br>
     USERNAME   <form:input path="username"/>
     <br><br>
+
     <input type="submit" value="OK">
 </form:form>
 
