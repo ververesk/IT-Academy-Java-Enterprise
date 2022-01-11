@@ -29,7 +29,7 @@ public class Teacher {
     @Column(name = "salary")
     private int salary;
 
-    @ToString.Exclude
+
     @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
     @JoinColumn(name = "course_id", updatable = false)
     private Course course;
@@ -75,6 +75,11 @@ public class Teacher {
 
     public Teacher withUsername(String username) {
         setUsername(username);
+        return this;
+    }
+
+    public Teacher withCourse(Course course) {
+        setCourse(course);
         return this;
     }
 }
