@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 /*
 Учитель может только смотреть информацию и редактировать оценки
  */
 @Repository
-public class MathCourseJPA implements AbstractRepository<MathCourse> {
+public class MathCourseRepositoryJPA implements AbstractRepository<MathCourse> {
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -31,7 +32,9 @@ public class MathCourseJPA implements AbstractRepository<MathCourse> {
 
     @Override
     public MathCourse getEntity(int id) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        MathCourse mathCourse = session.get(MathCourse.class, id);
+        return mathCourse;
     }
 
     @Override

@@ -1,38 +1,35 @@
 package org.grigorovich.app.service;
 
-
 import org.grigorovich.app.repositories.AbstractRepository;
-import org.grigorovich.model.Student;
+import org.grigorovich.model.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
 @Service
-public class StudentServiceImpl implements EntityService<Student>{
-
-    @Qualifier("studentRepositoryJPA")
+public class CourseServiceImpl implements EntityService<Course>{
+    @Qualifier("courseRepositoryJPA")
     @Autowired
     private AbstractRepository abstractRepository;
 
     @Override
-    @Transactional //Spring берет на себя ответственность за открытие и закрытие транзакций
-    public List<Student> getAll() {
+    @Transactional
+    public List<Course> getAll() {
         return abstractRepository.getAll();
     }
 
     @Override
     @Transactional
-    public void saveEntity(Student student) {
-        abstractRepository.saveEntity(student);
+    public void saveEntity(Course course) {
+        abstractRepository.saveEntity(course);
     }
 
     @Override
     @Transactional
-    public Student getEntity(int id) {
-        return (Student) abstractRepository.getEntity(id);
+    public Course getEntity(int id) {
+        return (Course) abstractRepository.getEntity(id);
     }
 
     @Override
