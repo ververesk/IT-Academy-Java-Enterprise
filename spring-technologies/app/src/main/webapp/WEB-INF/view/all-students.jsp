@@ -44,8 +44,8 @@
             <td>${st.surname}</td>
             <td>${st.age}</td>
             <td>${st.username}</td>
-            <c:set value="${st.courseList}" scope="page" var="courseList"/>
-            <c:forEach items="${courseList}" var="course">
+            <c:set value="${st.courseList}" scope="page" var="allCourses"/>
+            <c:forEach items="${allCourses}" var="course">
                 <td><c:out value="${empty course ? '---' : course.courseName}"/></td>
             </c:forEach>
 

@@ -38,9 +38,9 @@ public class Course implements Serializable {
     private String courseName;
 
     @ToString.Exclude
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
+    @ManyToMany(mappedBy = "courseList")
     @JoinTable(name = "student_cours_grades", joinColumns = @JoinColumn(name="course_id"), inverseJoinColumns = @JoinColumn(name="student_id"))
-    private List<Student> studentList;
+    private List<Student> studentList = new ArrayList<>();
 
     public void addStudentToCourse(Student student) {
         if (studentList==null) {

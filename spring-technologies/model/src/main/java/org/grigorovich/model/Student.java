@@ -49,7 +49,7 @@ public class Student implements Serializable {
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
     @JoinTable(name = "student_cours_grades", joinColumns = @JoinColumn(name="student_id"), inverseJoinColumns = @JoinColumn(name="course_id"))
-    private List<Course> courseList;
+    private List<Course> courseList = new ArrayList<>();
 
 
     public Student(String name, String surname, int age, String username) {

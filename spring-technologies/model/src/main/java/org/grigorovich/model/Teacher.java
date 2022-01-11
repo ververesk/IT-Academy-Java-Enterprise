@@ -30,7 +30,7 @@ public class Teacher {
     private int salary;
 
 
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "course_id", updatable = false)
     private Course course;
 

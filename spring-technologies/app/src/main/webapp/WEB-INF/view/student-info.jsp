@@ -20,7 +20,6 @@
     <br><br>
     USERNAME   <form:input path="username"/>
     <br><br>
-
     <input type="submit" value="OK">
 </form:form>
 
