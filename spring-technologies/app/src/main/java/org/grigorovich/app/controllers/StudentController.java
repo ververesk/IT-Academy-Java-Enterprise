@@ -1,7 +1,6 @@
 package org.grigorovich.app.controllers;
 
 import org.grigorovich.app.service.EntityService;
-import org.grigorovich.model.Course;
 import org.grigorovich.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
