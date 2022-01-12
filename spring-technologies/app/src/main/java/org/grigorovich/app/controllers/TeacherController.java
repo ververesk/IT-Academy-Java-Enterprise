@@ -1,6 +1,7 @@
 package org.grigorovich.app.controllers;
 
 import org.grigorovich.app.service.EntityService;
+import org.grigorovich.model.Course;
 import org.grigorovich.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,18 +21,24 @@ public class TeacherController {
     @Qualifier("teacherServiceImpl")
     private EntityService service;
 
+    @Autowired
+    @Qualifier("courseServiceImpl")
+    private EntityService serviceCourse;
+
     @RequestMapping("/allTeachers")
     public String allTeachers(Model model) {
-        List<Teacher> teachers=service.getAll();
+        List<Teacher> teachers = service.getAll();
         model.addAttribute("allTeach", teachers);
         return "all-teachers";
     }
+
     @RequestMapping("/addNewTeacher")
     public String addNewTeacher(Model model) {
-        Teacher teacher=new Teacher();
+        Teacher teacher = new Teacher();
         model.addAttribute("teacher", teacher);
         return "teacher-info";
     }
+
     @RequestMapping("/saveTeacher")
     public String saveStudent(@Valid @ModelAttribute("teacher") Teacher teacher, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -41,9 +48,10 @@ public class TeacherController {
             return "redirect:/allTeachers";
         }
     }
+
     @RequestMapping("/updateTeacher")
     public String updateTeacher(@RequestParam("tId") int id, Model model) {
-        Teacher teacher= (Teacher) service.getEntity(id);
+        Teacher teacher = (Teacher) service.getEntity(id);
         model.addAttribute("teacher", teacher);
         return "teacher-info";
     }

@@ -23,7 +23,6 @@ public class MathCourse {
     private int id;
     @Min(value=1, message = "must be greater than 0")
     @Max(value=11, message = "must be less than 11")
-    @NotBlank(message="this is required field")
     @Column(name = "grades")
     private int grades;
 

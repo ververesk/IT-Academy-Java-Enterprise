@@ -12,6 +12,12 @@
 <br>
 <br>
 <a href="${pageContext.request.contextPath}/allCourses">Courses</a>
+<br>
+<br>
+<a href="${pageContext.request.contextPath}/noahSmith">Info for Noah Smith</a>
+<br>
+<br>
+<a href="${pageContext.request.contextPath}/allStudentsOfMath">Math Course</a>
 </body>
 
 </html>

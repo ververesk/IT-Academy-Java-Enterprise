@@ -18,7 +18,7 @@ public class NoahSmith {
     private int id;
 
     @Column(name = "grades", updatable = false)
-    private int grades;
+    private Integer grades;
 
     @Column(name = "course_name", updatable = false)
     private String courseName;
