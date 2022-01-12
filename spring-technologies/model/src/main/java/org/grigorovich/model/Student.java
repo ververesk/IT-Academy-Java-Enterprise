@@ -17,8 +17,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @EqualsAndHashCode(exclude = "courseList")
 @Data
@@ -46,9 +46,9 @@ public class Student implements Serializable {
     @Column(name = "username")
     private String username;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "student_cours_grades", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
-    private List<Course> courseList = new ArrayList<>();
+    private Set<Course> courseList = new HashSet<>();
 
 
     public Student(String name, String surname, int age, String username) {
@@ -89,12 +89,5 @@ public class Student implements Serializable {
     public Student withUsername(String username) {
         setUsername(username);
         return this;
-    }
-
-    public void addCourseToStudent(Course course) {
-        if (courseList == null) {
-            courseList = new ArrayList<>();
-        }
-        courseList.add(course);
     }
 }

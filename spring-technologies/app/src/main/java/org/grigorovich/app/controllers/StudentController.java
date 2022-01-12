@@ -1,6 +1,7 @@
 package org.grigorovich.app.controllers;
 
 import org.grigorovich.app.service.EntityService;
+import org.grigorovich.model.Course;
 import org.grigorovich.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,6 +21,10 @@ public class StudentController {
     @Qualifier("studentServiceImpl")
     private EntityService service;
 
+    @Autowired
+    @Qualifier("courseServiceImpl")
+    private EntityService serviceCourse;
+
     @RequestMapping("/allStudents")
     public String allStudents(Model model) { //модель нужна для того чтобы во вью можно было передать список работников
         List<Student> students=service.getAll();
@@ -28,6 +33,8 @@ public class StudentController {
     }
     @RequestMapping("/addNewStudent")
     public String addNewStudent(Model model) {
+        List<Course> courses = serviceCourse.getAll();
+        model.addAttribute("courses", courses);
         Student student=new Student();
         model.addAttribute("student", student);
         return "student-info";
@@ -37,6 +44,7 @@ public class StudentController {
         if (bindingResult.hasErrors()) {
             return "student-info";
         } else {
+
             service.saveEntity(student);
             return "redirect:/allStudents";
         }
@@ -45,6 +53,8 @@ public class StudentController {
     public String updateStudent(@RequestParam("stId") int id, Model model) { //получаем из запроса значение id
         Student student= (Student) service.getEntity(id);
         model.addAttribute("student", student); //теперь вью будет отбражаться с заполненными формами
+        List<Course> courses = serviceCourse.getAll();
+        model.addAttribute("courses", courses);
         return "student-info";
     }
 

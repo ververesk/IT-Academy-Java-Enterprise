@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Data
@@ -40,14 +41,8 @@ public class Course implements Serializable {
     @ToString.Exclude
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
     @JoinTable(name = "student_cours_grades", joinColumns = @JoinColumn(name="course_id"), inverseJoinColumns = @JoinColumn(name="student_id"))
-    private List<Student> studentList = new ArrayList<>();
+    private HashSet<Student> studentList = new HashSet<>();
 
-    public void addStudentToCourse(Student student) {
-        if (studentList==null) {
-            studentList=new ArrayList<>();
-        }
-        studentList.add(student);
-    }
 
     public Course withCourseId(int courseId) {
         setCourseId(courseId);
