@@ -22,9 +22,10 @@
     USERNAME   <form:input path="username"/>
     <br><br>
     Courses  <c:forEach items="${courses}" var="course">
-    <tr>
-        <td><form:checkbox path="courseList"  label="${course.courseId}" value="${course.courseName}" /></td>
-    </tr>
+<tr>
+    <td><form:checkbox path="courseList" value="${course}" label="${course.courseId}" /></td>
+    <td><c:out value="${course.courseName}" /></td>
+</tr>
 </c:forEach>
     <br><br>
     <input type="submit" value="OK">
