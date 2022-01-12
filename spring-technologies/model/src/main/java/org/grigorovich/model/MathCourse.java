@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 
 @Data
 @NoArgsConstructor
@@ -21,8 +20,8 @@ public class MathCourse {
     @Id
     @Column(name = "id", updatable = false)
     private int id;
-    @Min(value=1, message = "must be greater than 0")
-    @Max(value=11, message = "must be less than 11")
+    @Min(value = 1, message = "must be greater than 0")
+    @Max(value = 11, message = "must be less than 11")
     @Column(name = "grades")
     private int grades;
 

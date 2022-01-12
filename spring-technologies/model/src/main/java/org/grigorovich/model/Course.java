@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.SelectBeforeUpdate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,7 +20,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 @Data
@@ -28,6 +28,7 @@ import java.util.List;
 @EqualsAndHashCode(exclude = "studentList")
 @Entity
 @Table(name = "courses")
+@SelectBeforeUpdate
 public class Course implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

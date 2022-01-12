@@ -41,7 +41,7 @@ public class Teacher {
 
 
     @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "course_id", updatable = false)
+    @JoinColumn(name = "course_id")
     private Course course;
 
     @Column(name = "username")
