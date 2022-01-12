@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.List;
-
+/*
+Здесь прописана возможность прямо через вью менять с помощью many-to-many курсы студентов
+ */
 @Controller
 public class StudentController {
     @Autowired
