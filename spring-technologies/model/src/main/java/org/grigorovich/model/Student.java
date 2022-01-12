@@ -5,20 +5,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import java.util.List;
 
 @EqualsAndHashCode(exclude = "courseList")
@@ -34,11 +24,11 @@ public class Student implements Serializable {
     private int id;
 
     @Column(name = "name")
-    @NotBlank(message="this is required field")
+    @NotBlank(message = "this is required field")
     private String name;
 
     @Column(name = "surname")
-    @NotBlank(message="this is required field")
+    @NotBlank(message = "this is required field")
     private String surname;
 
     @Column(name = "age")
@@ -48,7 +38,7 @@ public class Student implements Serializable {
     private String username;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-    @JoinTable(name = "student_cours_grades", joinColumns = @JoinColumn(name="student_id"), inverseJoinColumns = @JoinColumn(name="course_id"))
+    @JoinTable(name = "student_cours_grades", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
     private List<Course> courseList = new ArrayList<>();
 
 
@@ -94,7 +84,7 @@ public class Student implements Serializable {
 
     public void addCourseToStudent(Course course) {
         if (courseList == null) {
-            courseList=new ArrayList<>();
+            courseList = new ArrayList<>();
         }
         courseList.add(course);
     }
