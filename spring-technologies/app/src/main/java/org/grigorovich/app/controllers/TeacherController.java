@@ -1,6 +1,7 @@
 package org.grigorovich.app.controllers;
 
 import org.grigorovich.app.service.EntityService;
+import org.grigorovich.model.Course;
 import org.grigorovich.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class TeacherController {
     @Autowired
     @Qualifier("teacherServiceImpl")
     private EntityService service;
+
 
     @RequestMapping("/allTeachers")
     public String allTeachers(Model model) {
@@ -35,10 +38,18 @@ public class TeacherController {
     }
 
     @RequestMapping("/saveTeacher")
-    public String saveStudent(@Valid @ModelAttribute("teacher") Teacher teacher, BindingResult bindingResult) {
+    public String saveStudent(HttpServletRequest request, @Valid @ModelAttribute("teacher") Teacher teacher, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "teacher-info";
         } else {
+            int id = Integer.parseInt(request.getParameter("id"));
+            String name = (String) request.getParameter("name");
+            String surname = (String) request.getParameter("surname");
+            int salary = Integer.parseInt(request.getParameter("salary"));
+            String course = (String) request.getParameter("course");
+            Course course1 = new Course(course);
+            String username = (String) request.getParameter("username");
+            teacher = new Teacher(id, name, surname, salary, course1, username);
             service.saveEntity(teacher);
             return "redirect:/allTeachers";
         }

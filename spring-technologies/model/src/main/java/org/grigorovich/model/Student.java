@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -26,6 +28,8 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "students")
+@SelectBeforeUpdate
+@DynamicUpdate
 public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

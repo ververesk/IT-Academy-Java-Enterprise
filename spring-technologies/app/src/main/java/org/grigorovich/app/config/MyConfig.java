@@ -61,6 +61,8 @@ public class MyConfig {
         hibernateProperties.setProperty("hibernate.dbcp.minIdle", "5");
         hibernateProperties.setProperty("hibernate.dbcp.maxWaitMillis", "-1");
         hibernateProperties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
+        hibernateProperties.setProperty("hibernate.order_inserts", "true");
+        hibernateProperties.setProperty("hibernate.order_updates", "true");
         sessionFactory.setHibernateProperties(hibernateProperties);
         return sessionFactory;
     }

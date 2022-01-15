@@ -24,7 +24,18 @@ public class TeacherRepositoryJPA implements AbstractRepository<Teacher>{
     @Override
     public void saveEntity(Teacher teacher) {
         Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(teacher);
+        if (teacher.getId()!=0) {
+            Query query = session.createQuery("UPDATE Teacher t SET t.name=:tName, t.surname=:tSurname, t.salary=:tSalary, t.course=:tCourse, t.username=:tUsername  WHERE t.id=:tId");
+            query.setParameter("tName", teacher.getName());
+            query.setParameter("tSurname", teacher.getSurname());
+            query.setParameter("tSalary", teacher.getSalary());
+            query.setParameter("tCourse", teacher.getCourse());
+            query.setParameter("tUsername", teacher.getUsername());
+            query.setParameter("tId", teacher.getId());
+            query.executeUpdate();
+        } else {
+            session.persist(teacher);
+        }
     }
 
     @Override

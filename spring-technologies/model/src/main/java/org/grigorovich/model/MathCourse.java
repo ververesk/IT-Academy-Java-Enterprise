@@ -3,6 +3,7 @@ package org.grigorovich.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,13 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "math")
-public class MathCourse {
+@DynamicUpdate
+public class MathCourse implements Serializable {
     @Id
     @Column(name = "id", updatable = false)
     private int id;

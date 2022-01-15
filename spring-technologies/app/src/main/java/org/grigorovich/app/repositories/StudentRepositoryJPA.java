@@ -23,7 +23,11 @@ public class StudentRepositoryJPA implements AbstractRepository<Student> {
     @Override
     public void saveEntity(Student student) {
         Session session=sessionFactory.getCurrentSession();
-        session.saveOrUpdate(student);
+        if (student.getId()!=0) {
+            session.merge(student);
+        } else {
+            session.persist(student);
+        }
     }
 
     @Override

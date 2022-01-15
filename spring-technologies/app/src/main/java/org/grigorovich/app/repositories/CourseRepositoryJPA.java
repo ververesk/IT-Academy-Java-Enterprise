@@ -24,7 +24,11 @@ public class CourseRepositoryJPA implements AbstractRepository<Course> {
     @Override
     public void saveEntity(Course course) {
         Session session = sessionFactory.getCurrentSession();
-        session.saveOrUpdate(course);
+        if (course.getCourseId()!=0) {
+            session.merge(course);
+        } else {
+            session.persist(course);
+        }
     }
 
     @Override
