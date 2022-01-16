@@ -17,7 +17,7 @@
     <form:hidden path="studentName"></form:hidden>
 
     <br><br>
-    <input type="submit" value="OK">
+    <input class="button" type="submit" value="OK">
 </form:form>
 
 </body>

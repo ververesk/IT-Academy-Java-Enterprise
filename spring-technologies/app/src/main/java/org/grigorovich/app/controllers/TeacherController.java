@@ -1,7 +1,6 @@
 package org.grigorovich.app.controllers;
 
 import org.grigorovich.app.service.EntityService;
-import org.grigorovich.model.Course;
 import org.grigorovich.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -43,14 +42,11 @@ public class TeacherController {
             return "teacher-info";
         } else {
             int id = Integer.parseInt(request.getParameter("id"));
-            String name = (String) request.getParameter("name");
-            String surname = (String) request.getParameter("surname");
+            String name = request.getParameter("name");
+            String surname =  request.getParameter("surname");
             int salary = Integer.parseInt(request.getParameter("salary"));
-            String course = (String) request.getParameter("course");
-            Course course1 = new Course(course);
-            String username = (String) request.getParameter("username");
-            teacher = new Teacher(id, name, surname, salary, course1, username);
-            service.saveEntity(teacher);
+            String username = request.getParameter("username");
+            service.saveEntity(new Teacher(id, name, surname, salary, username));
             return "redirect:/allTeachers";
         }
     }

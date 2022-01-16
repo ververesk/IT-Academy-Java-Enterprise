@@ -4,11 +4,14 @@
 <html>
 <head>
     <title>INFO for Noah Smith</title>
+    <style>
+        <%@include file="style.css"%>
+    </style>
 </head>
 <body>
 <h2>INFO for Noah Smith</h2>
 <br>
-<table border="1" cellpadding="5" cellspacing="1" >
+<table class="tg" >
 <tr>
     <th>id</th>
     <th>grades</th>

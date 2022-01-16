@@ -1,14 +1,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>All Courses</title>
+    <style>
+        <%@include file="style.css"%>
+    </style>
 </head>
 <body>
 <h2>All Courses </h2>
 <br>
-    <table border="1" cellpadding="5" cellspacing="1" >
+    <table class="tg" >
         <tr>
             <th>edit</th>
             <th>delete</th>
@@ -40,7 +44,7 @@
 
 </table>
 <br>
-<input type="button" value="add"
+<input class="button" type="button" value="add"
        onclick="window.location.href='addNewCourse'"/>
 
 

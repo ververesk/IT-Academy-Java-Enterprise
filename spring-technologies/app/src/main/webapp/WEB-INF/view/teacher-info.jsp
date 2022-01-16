@@ -8,6 +8,7 @@
 </head>
 <body>
 <h2>Teacher info</h2>
+<p>
 <form:form action="saveTeacher" modelAttribute="teacher" method="post">
     <form:hidden path="id"></form:hidden>
     NAME   <form:input path="name"/>
@@ -22,8 +23,8 @@
     <br><br>
     USERNAME   <form:input path="username"/>
     <br><br>
-
-    <input type="submit" value="OK">
+</p>
+    <input class="button" type="submit" value="OK">
 </form:form>
 
 </body>

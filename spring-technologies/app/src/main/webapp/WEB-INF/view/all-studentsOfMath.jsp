@@ -4,11 +4,14 @@
 <html>
 <head>
     <title>Math Course</title>
+    <style>
+        <%@include file="style.css"%>
+    </style>
 </head>
 <body>
 <h2>Math Course </h2>
 <br>
-    <table border="1" cellpadding="5" cellspacing="1" >
+    <table class="tg">
         <tr>
             <th>edit</th>
             <th>id</th>
@@ -22,7 +25,7 @@
         </c:url>
         <tr>
             <td>
-                <input type="button" value="Update"
+                <input class="button" type="button" value="Update"
                        onclick="window.location.href = '${updateButton}'">
             </td>
             <td>${m.id}</td>

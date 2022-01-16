@@ -13,7 +13,7 @@
     NAME   <form:input path="courseName"/>
     <form:errors path="courseName"/>
     <br><br>
-    <input type="submit" value="OK">
+    <input class="button" type="submit" value="OK">
 </form:form>
 
 </body>

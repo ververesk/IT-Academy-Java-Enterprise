@@ -4,11 +4,14 @@
 <html>
 <head>
     <title>All Students</title>
+    <style>
+        <%@include file="style.css"%>
+    </style>
 </head>
 <body>
 <h2>All Students </h2>
 <br>
-    <table border="1" cellpadding="5" cellspacing="1" >
+    <table class="tg" >
         <tr>
             <th>edit</th>
             <th>delete</th>
@@ -50,7 +53,7 @@
 
 </table>
 <br>
-<input type="button" value="add"
+<input  class="button" type="button" value="add"
        onclick="window.location.href='addNewStudent'"/>
 
 

@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
+
 /*
 Здесь прописана возможность прямо через вью менять с помощью many-to-many курсы студентов
  */
@@ -29,31 +31,38 @@ public class StudentController {
 
     @RequestMapping("/allStudents")
     public String allStudents(Model model) { //модель нужна для того чтобы во вью можно было передать список работников
-        List<Student> students=service.getAll();
+        List<Student> students = service.getAll();
         model.addAttribute("allSt", students);
         return "all-students";
     }
+
     @RequestMapping("/addNewStudent")
     public String addNewStudent(Model model) {
         List<Course> courses = serviceCourse.getAll();
         model.addAttribute("courses", courses);
-        Student student=new Student();
+        Student student = new Student();
         model.addAttribute("student", student);
         return "student-info";
     }
+
     @RequestMapping("/saveStudent")
-    public String saveStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult) {
+    public String saveStudent(HttpServletRequest request, @Valid @ModelAttribute("student") Student student, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "student-info";
         } else {
-
-            service.saveEntity(student);
+            int id = Integer.parseInt(request.getParameter("id"));
+            String name = request.getParameter("name");
+            String surname =  request.getParameter("surname");
+            int age = Integer.parseInt(request.getParameter("age"));
+            String username = request.getParameter("username");
+            service.saveEntity(new Student(id, name, surname, age, username));
             return "redirect:/allStudents";
         }
     }
+
     @RequestMapping("/updateStudent")
     public String updateStudent(@RequestParam("stId") int id, Model model) { //получаем из запроса значение id
-        Student student= (Student) service.getEntity(id);
+        Student student = (Student) service.getEntity(id);
         model.addAttribute("student", student); //теперь вью будет отбражаться с заполненными формами
         List<Course> courses = serviceCourse.getAll();
         model.addAttribute("courses", courses);

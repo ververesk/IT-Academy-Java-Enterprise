@@ -63,8 +63,8 @@ public class Course implements Serializable {
         this.courseName = courseName;
     }
 
-    @Override
-    public String toString() {
-        return this.courseName;
-    }
+//    @Override
+//    public String toString() {
+//        return this.courseName;
+//    }
 }

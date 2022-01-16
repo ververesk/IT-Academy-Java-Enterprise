@@ -24,7 +24,13 @@ public class StudentRepositoryJPA implements AbstractRepository<Student> {
     public void saveEntity(Student student) {
         Session session=sessionFactory.getCurrentSession();
         if (student.getId()!=0) {
-            session.merge(student);
+            Query query = session.createQuery("UPDATE Student s SET s.name=:sName, s.surname=:sSurname, s.age=:sAge, s.username=:sUsername  WHERE s.id=:sId");
+            query.setParameter("sName", student.getName());
+            query.setParameter("sSurname", student.getSurname());
+            query.setParameter("sAge", student.getAge());
+            query.setParameter("sUsername", student.getUsername());
+            query.setParameter("sId", student.getId());
+            query.executeUpdate();
         } else {
             session.persist(student);
         }
