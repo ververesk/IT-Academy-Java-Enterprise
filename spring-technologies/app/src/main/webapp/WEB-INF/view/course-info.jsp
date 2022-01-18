@@ -5,6 +5,9 @@
 <html>
 <head>
     <title>Course info</title>
+    <style>
+        <%@include file="style.css"%>
+    </style>
 </head>
 <body>
 <h2>Course info</h2>
@@ -15,6 +18,7 @@
     <br><br>
     <input class="button" type="submit" value="OK">
 </form:form>
+<br><br>
 <a href="${pageContext.request.contextPath}/" >Back</a>
 </body>
 </html>

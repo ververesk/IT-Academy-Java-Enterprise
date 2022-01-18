@@ -24,6 +24,9 @@
 <br>
 <br>
 <a href="${pageContext.request.contextPath}/allStudentsOfMath">Math Course</a>
+<br>
+<br>
+<a href="${pageContext.request.contextPath}/logout">logout</a>
 </body>
 
 </html>
