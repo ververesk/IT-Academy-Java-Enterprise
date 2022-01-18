@@ -1,6 +1,9 @@
 package org.grigorovich.app.config;
 
+import org.grigorovich.app.filters.ContentCachingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import javax.servlet.Filter;
 
 public class MyWebbInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
@@ -16,5 +19,12 @@ public class MyWebbInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected String[] getServletMappings() {
         return new String[] {"/"};
+    }
+
+    @Override
+    protected Filter[] getServletFilters() {
+        return new Filter[] {
+                (Filter) new ContentCachingFilter()
+        };
     }
 }
