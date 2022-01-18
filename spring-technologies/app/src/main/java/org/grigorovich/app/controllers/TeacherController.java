@@ -1,8 +1,11 @@
 package org.grigorovich.app.controllers;
 
+
 import org.grigorovich.app.service.EntityService;
 import org.grigorovich.app.service.TeacherService;
 import org.grigorovich.model.Teacher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,8 @@ import java.util.List;
 
 @Controller
 public class TeacherController {
+    private static final Logger logger = LoggerFactory.getLogger(
+            TeacherController.class);
     @Autowired
     @Qualifier("teacherServiceImpl")
     private EntityService service;

@@ -1,9 +1,12 @@
 package org.grigorovich.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.SelectBeforeUpdate;
 
@@ -23,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode(exclude = "courseList")
+@ToString(exclude = "courseList")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -49,6 +53,7 @@ public class Student implements Serializable {
 
     @Column(name = "username")
     private String username;
+
 
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(name = "student_cours_grades", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
@@ -94,4 +99,5 @@ public class Student implements Serializable {
         setUsername(username);
         return this;
     }
+
 }
