@@ -27,6 +27,6 @@
     <br><br>
     <input class="button" type="submit" value="OK">
 </form:form>
-
+<a href="${pageContext.request.contextPath}/" >Back</a>
 </body>
 </html>

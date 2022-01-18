@@ -46,8 +46,9 @@
 <br>
 <input class="button" type="button" value="add"
        onclick="window.location.href='addNewCourse'"/>
-
-
+<br>
+<br>
+<a href="${pageContext.request.contextPath}/" >Back</a>
 
 </body>
 </html>

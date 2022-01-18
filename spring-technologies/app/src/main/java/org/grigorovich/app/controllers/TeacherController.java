@@ -1,6 +1,7 @@
 package org.grigorovich.app.controllers;
 
 import org.grigorovich.app.service.EntityService;
+import org.grigorovich.app.service.TeacherService;
 import org.grigorovich.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,6 +21,9 @@ public class TeacherController {
     @Autowired
     @Qualifier("teacherServiceImpl")
     private EntityService service;
+
+    @Autowired
+    private TeacherService teacherService;
 
 
     @RequestMapping("/allTeachers")
@@ -63,4 +67,17 @@ public class TeacherController {
         service.deleteEntity(id);
         return "redirect:/allTeachers";
     }
+    @RequestMapping("/avgTeacherSalary")
+    public String avgSalary(Model model) {
+        model.addAttribute("avgSalary", teacherService.avgTeacherSalary());
+        return "avgTeacherSalary";
+    }
+
+    @RequestMapping("/sumSalary")
+    public String sumSalary(Model model) {
+        model.addAttribute("sumSalaries", teacherService.sumTeacherSalary());
+        return "sumTeacherSalary";
+    }
+
+
 }

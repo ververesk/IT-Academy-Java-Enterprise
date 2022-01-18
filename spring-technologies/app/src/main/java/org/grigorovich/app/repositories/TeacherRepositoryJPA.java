@@ -7,13 +7,13 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
+
 /*
 Прописала свой метод update иначе hibernate творил дичь невероятную
  */
 @Repository
-public class TeacherRepositoryJPA implements AbstractRepository<Teacher>{
+public class TeacherRepositoryJPA implements AbstractRepository<Teacher>, InfoAboutTeachersRepository {
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -27,7 +27,7 @@ public class TeacherRepositoryJPA implements AbstractRepository<Teacher>{
     @Override
     public void saveEntity(Teacher teacher) {
         Session session = sessionFactory.getCurrentSession();
-        if (teacher.getId()!=0) {
+        if (teacher.getId() != 0) {
             Query query = session.createQuery("UPDATE Teacher t SET t.name=:tName, t.surname=:tSurname, t.salary=:tSalary, t.username=:tUsername  WHERE t.id=:tId");
             query.setParameter("tName", teacher.getName());
             query.setParameter("tSurname", teacher.getSurname());
@@ -43,8 +43,7 @@ public class TeacherRepositoryJPA implements AbstractRepository<Teacher>{
     @Override
     public Teacher getEntity(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Teacher teacher = session.get(Teacher.class, id);
-        return teacher;
+        return session.get(Teacher.class, id);
     }
 
     @Override
@@ -55,18 +54,18 @@ public class TeacherRepositoryJPA implements AbstractRepository<Teacher>{
         query.executeUpdate();
     }
 
-
+    @Override
     public Long sumTeacherSalary() {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("Select sum(t.salary) FROM Teacher t", Long.class);
-        return (Long) query.getSingleResult();
+        Query<Long> query = session.createQuery("Select sum(t.salary) FROM Teacher t", Long.class);
+        return query.getSingleResult();
     }
 
-
+    @Override
     public String avgTeacherSalary() {
         Session session = sessionFactory.getCurrentSession();
         javax.persistence.Query query = session.createQuery("Select avg(t.salary) FROM Teacher t", Double.class);
         Double avgSalaries = (Double) query.getSingleResult();
-        return  String.format("%.2f",avgSalaries);
+        return String.format("%.2f", avgSalaries);
     }
 }

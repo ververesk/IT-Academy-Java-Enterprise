@@ -54,8 +54,15 @@
 <br>
 <input class="button" type="button" value="add"
        onclick="window.location.href='addNewTeacher'"/>
+<aside>
+    <p> <a href="avgTeacherSalary" >Average Salary Of Teachers</a>
+        <br>
+        <br>
+    <a href="sumSalary" >Sum Salary Of Teachers</a></p>
+</aside>
 
-
-
+<br>
+<br>
+<a href="${pageContext.request.contextPath}/" >Back</a>
 </body>
 </html>

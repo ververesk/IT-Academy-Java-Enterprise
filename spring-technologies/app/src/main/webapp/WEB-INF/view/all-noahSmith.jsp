@@ -29,5 +29,6 @@
 </table>
 <br>
 <br>
+<a href="${pageContext.request.contextPath}/" >Back</a>
 </body>
 </html>
