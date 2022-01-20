@@ -46,7 +46,7 @@ public class TeacherController {
     }
 
     @RequestMapping("/saveTeacher")
-    public String saveStudent(HttpServletRequest request, @Valid @ModelAttribute("teacher") Teacher teacher, BindingResult bindingResult) {
+    public String saveTeacher(HttpServletRequest request, @Valid @ModelAttribute("teacher") Teacher teacher, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "teacher-info";
         } else {

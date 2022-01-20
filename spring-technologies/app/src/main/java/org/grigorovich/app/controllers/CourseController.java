@@ -35,7 +35,7 @@ public class CourseController {
     }
 
     @RequestMapping("/saveCourse")
-    public String saveStudent(@Valid @ModelAttribute("course") Course course, BindingResult bindingResult) {
+    public String saveCourse(@Valid @ModelAttribute("course") Course course, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "course-info";
         } else {
