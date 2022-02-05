@@ -1,10 +1,10 @@
 package org.grigorovich.controllers;
 
-import org.grigorovich.app.service.EntityService;
 import org.grigorovich.model.Course;
 import org.grigorovich.model.Student;
+import org.grigorovich.service.CourseService;
+import org.grigorovich.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,23 +22,21 @@ import java.util.List;
 @Controller
 public class StudentController {
     @Autowired
-    @Qualifier("studentServiceImpl")
-    private EntityService service;
+    private StudentService service;
 
     @Autowired
-    @Qualifier("courseServiceImpl")
-    private EntityService serviceCourse;
+    private CourseService serviceCourse;
 
     @RequestMapping("/allStudents")
     public String allStudents(Model model) { //модель нужна для того чтобы во вью можно было передать список работников
-        List<Student> students = service.getAll();
+        List<Student> students = service.getAllStudents();
         model.addAttribute("allSt", students);
         return "all-students";
     }
 
     @RequestMapping("/addNewStudent")
     public String addNewStudent(Model model) {
-        List<Course> courses = serviceCourse.getAll();
+        List<Course> courses = serviceCourse.getAllCourses();
         model.addAttribute("courses", courses);
         Student student = new Student();
         model.addAttribute("student", student);
@@ -50,28 +48,23 @@ public class StudentController {
         if (bindingResult.hasErrors()) {
             return "student-info";
         } else {
-            int id = Integer.parseInt(request.getParameter("id"));
-            String name = request.getParameter("name");
-            String surname =  request.getParameter("surname");
-            int age = Integer.parseInt(request.getParameter("age"));
-            String username = request.getParameter("username");
-            service.saveEntity(new Student(id, name, surname, age, username));
+            service.saveStudent(student);
             return "redirect:/allStudents";
         }
     }
 
     @RequestMapping("/updateStudent")
     public String updateStudent(@RequestParam("stId") int id, Model model) { //получаем из запроса значение id
-        Student student = (Student) service.getEntity(id);
+        Student student = (Student) service.getStudent(id);
         model.addAttribute("student", student); //теперь вью будет отбражаться с заполненными формами
-        List<Course> courses = serviceCourse.getAll();
+        List<Course> courses = serviceCourse.getAllCourses();
         model.addAttribute("courses", courses);
         return "student-info";
     }
 
     @RequestMapping("/deleteStudent")
     public String deleteStudent(@RequestParam("stId") int id) { //получаем из запроса значение id
-        service.deleteEntity(id);
+        service.deleteStudent(id);
         return "redirect:/allStudents";
     }
 }

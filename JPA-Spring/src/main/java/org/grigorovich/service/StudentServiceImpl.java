@@ -1,43 +1,47 @@
 package org.grigorovich.service;
 
 
-import org.grigorovich.app.repositories.AbstractRepository;
 import org.grigorovich.model.Student;
+import org.grigorovich.repositories.StudentRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class StudentServiceImpl implements EntityService<Student>{
+public class StudentServiceImpl implements StudentService {
 
-    @Qualifier("studentRepositoryJPA")
     @Autowired
-    private AbstractRepository abstractRepository;
+    private StudentRepositoryJPA studentRepositoryJPA;
 
     @Override
-    @Transactional //Spring берет на себя ответственность за открытие и закрытие транзакций
-    public List<Student> getAll() {
-        return abstractRepository.getAll();
+    @Transactional
+    public List<Student> getAllStudents() {
+        return studentRepositoryJPA.findAll();
     }
 
     @Override
     @Transactional
-    public void saveEntity(Student student) {
-        abstractRepository.saveEntity(student);
+    public void saveStudent(Student student) {
+        studentRepositoryJPA.saveAndFlush(student);
     }
 
     @Override
     @Transactional
-    public Student getEntity(int id) {
-        return (Student) abstractRepository.getEntity(id);
+    public Student getStudent(int id) {
+        Student student = null;
+        Optional<Student> optional = studentRepositoryJPA.findById(id);
+        if (optional.isPresent()) {
+            student = optional.get();
+        }
+        return student;
     }
 
     @Override
     @Transactional
-    public void deleteEntity(int id) {
-        abstractRepository.deleteEntity(id);
+    public void deleteStudent(int id) {
+        studentRepositoryJPA.deleteById(id);
     }
 }

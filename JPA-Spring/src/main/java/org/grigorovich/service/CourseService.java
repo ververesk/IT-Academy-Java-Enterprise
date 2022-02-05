@@ -7,9 +7,9 @@ import java.util.List;
 public interface CourseService {
     List<Course> getAllCourses();
 
-    void saveCourse(Course course); //метод сохранения работника в базу данных
+    void saveCourse(Course course);
 
-    Course getCourse(int id); //получаем работника по id
+    Course getCourse(int id);
 
     void deleteCourse(int id);
 }

@@ -1,9 +1,8 @@
 package org.grigorovich.controllers;
 
-import org.grigorovich.app.service.EntityService;
 import org.grigorovich.model.MathCourse;
+import org.grigorovich.service.MathCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,12 +16,11 @@ import java.util.List;
 @Controller
 public class MathCourseController {
     @Autowired
-    @Qualifier("mathCourseServiceImpl")
-    private EntityService service;
+    private MathCourseService service;
 
     @RequestMapping("/allStudentsOfMath")
     public String allStudentOfMath(Model model) {
-        List<MathCourse> mathCourseList=service.getAll();
+        List<MathCourse> mathCourseList = service.showAllStudents();
         model.addAttribute("mathCourseList", mathCourseList);
         return "all-studentsOfMath";
     }
@@ -32,17 +30,16 @@ public class MathCourseController {
         if (bindingResult.hasErrors()) {
             return "mathCourse-info";
         } else {
-            service.saveEntity(mathCourse);
+            service.saveMathCourse(mathCourse);
             return "redirect:/allStudentsOfMath";
         }
     }
+
     @RequestMapping("/updateMathCourse")
     public String updateMathCourse(@RequestParam("id") int id, Model model) {
-        MathCourse mathCourse= (MathCourse) service.getEntity(id);
+        MathCourse mathCourse = (MathCourse) service.getMathCourse(id);
         model.addAttribute("mathCourse", mathCourse);
         return "mathCourse-info";
     }
-
-
 }
 

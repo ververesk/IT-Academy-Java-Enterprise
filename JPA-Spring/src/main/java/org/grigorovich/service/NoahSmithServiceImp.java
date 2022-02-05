@@ -1,41 +1,23 @@
 package org.grigorovich.service;
 
-import org.grigorovich.app.repositories.AbstractRepository;
 import org.grigorovich.model.NoahSmith;
+import org.grigorovich.repositories.NoahSmithRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-public class NoahSmithServiceImp implements EntityService<NoahSmith>{
+public class NoahSmithServiceImp implements NoahSmithService {
 
-    @Qualifier("noahSmithRepositoryJPA")
     @Autowired
-    private AbstractRepository abstractRepository;
-    @Override
-    @Transactional
-    public List<NoahSmith> getAll() {
-        return abstractRepository.getAll();
-    }
+    private NoahSmithRepositoryJPA noahSmithRepositoryJPA;
 
     @Override
     @Transactional
-    public void saveEntity(NoahSmith entity) {
-
-    }
-
-    @Override
-    @Transactional
-    public NoahSmith getEntity(int id) {
-        return null;
-    }
-
-    @Override
-    @Transactional
-    public void deleteEntity(int id) {
-
+    public List<NoahSmith> getAllInfo() {
+        return noahSmithRepositoryJPA.findAll();
     }
 }
+

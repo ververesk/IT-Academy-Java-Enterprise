@@ -1,9 +1,8 @@
 package org.grigorovich.controllers;
 
-import org.grigorovich.app.service.EntityService;
 import org.grigorovich.model.Course;
+import org.grigorovich.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,12 +16,11 @@ import java.util.List;
 @Controller
 public class CourseController {
     @Autowired
-    @Qualifier("courseServiceImpl")
-    private EntityService service;
+    private CourseService service;
 
     @RequestMapping("/allCourses")
     public String allCourses(Model model) {
-        List<Course> courses = service.getAll();
+        List<Course> courses = service.getAllCourses();
         model.addAttribute("courses", courses);
         return "all-courses";
     }
@@ -39,21 +37,21 @@ public class CourseController {
         if (bindingResult.hasErrors()) {
             return "course-info";
         } else {
-            service.saveEntity(course);
+            service.saveCourse(course);
             return "redirect:/allCourses";
         }
     }
 
     @RequestMapping("/updateCourse")
     public String updateCourse(@RequestParam("cId") int id, Model model) {
-        Course course = (Course) service.getEntity(id);
+        Course course = (Course) service.getCourse(id);
         model.addAttribute("course", course);
         return "course-info";
     }
 
     @RequestMapping("/deleteCourse")
     public String deleteCourse(@RequestParam("cId") int id) {
-        service.deleteEntity(id);
+        service.deleteCourse(id);
         return "redirect:/allCourses";
     }
 }

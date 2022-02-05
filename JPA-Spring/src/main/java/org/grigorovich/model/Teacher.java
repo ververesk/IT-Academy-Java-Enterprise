@@ -48,7 +48,7 @@ public class Teacher implements Serializable {
 
 
     @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "course_id")
+    @JoinColumn(name = "course_id", updatable = false)
     private Course course;
 
     @Column(name = "username")
