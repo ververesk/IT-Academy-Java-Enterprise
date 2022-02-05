@@ -42,4 +42,11 @@ public class CourseServiceImpl implements CourseService{
     public void deleteCourse(int id) {
         courseRepositoryJPA.deleteById(id);
     }
+
+
+    @Transactional
+    @Override
+    public void saveAllCourses(List<Course> courseList) {
+        courseRepositoryJPA.saveAll(courseList);
+    }
 }
