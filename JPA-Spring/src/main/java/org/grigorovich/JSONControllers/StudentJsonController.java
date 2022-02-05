@@ -79,7 +79,7 @@ public class StudentJsonController {
 
     @DeleteMapping("/students/{id}")
     public String deleteStudent(@PathVariable int id) {
-        Student student = (Student) service.getStudent(id);
+        Student student = service.getStudent(id);
         if (student == null) {
             throw new NoSuchEntityException("There is no entity with id=" + id + " in DataBase");
         }

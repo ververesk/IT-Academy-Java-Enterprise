@@ -15,4 +15,6 @@ public interface TeacherService {
     Long sumTeacherSalary();
 
     Double avgTeacherSalary();
+
+    void saveOrUpdateTeacher(Teacher teacher);
 }

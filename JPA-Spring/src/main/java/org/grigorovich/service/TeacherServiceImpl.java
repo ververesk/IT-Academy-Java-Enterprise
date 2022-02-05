@@ -1,6 +1,7 @@
 package org.grigorovich.service;
 
 import org.grigorovich.model.Teacher;
+import org.grigorovich.repositories.TeacherRepositoryForSaveAndUpdate;
 import org.grigorovich.repositories.TeacherRepositoryJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,9 +11,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class TeacherServiceImpl implements TeacherService{
+public class TeacherServiceImpl implements TeacherService {
     @Autowired
     private TeacherRepositoryJPA teacherRepositoryJPA;
+
+    @Autowired
+    private TeacherRepositoryForSaveAndUpdate teacherRepositoryForSaveAndUpdate;
 
     @Override
     @Transactional
@@ -21,10 +25,10 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
-    @Transactional
     public void saveTeacher(Teacher teacher) {
         teacherRepositoryJPA.save(teacher);
     }
+
 
     @Override
     @Transactional
@@ -53,5 +57,11 @@ public class TeacherServiceImpl implements TeacherService{
     @Transactional
     public Double avgTeacherSalary() {
         return teacherRepositoryJPA.avgTeacherSalary();
+    }
+
+    @Override
+    @Transactional
+    public void saveOrUpdateTeacher(Teacher teacher) {
+        teacherRepositoryForSaveAndUpdate.saveOrUpdateTeacher(teacher);
     }
 }

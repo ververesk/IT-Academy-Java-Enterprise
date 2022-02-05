@@ -2,10 +2,8 @@ package org.grigorovich.JSONControllers;
 
 import org.grigorovich.dto.CourseConverter;
 import org.grigorovich.dto.CourseDTO;
-import org.grigorovich.dto.TeacherConverter;
 import org.grigorovich.exception.NoSuchEntityException;
 import org.grigorovich.model.Course;
-import org.grigorovich.model.Teacher;
 import org.grigorovich.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;

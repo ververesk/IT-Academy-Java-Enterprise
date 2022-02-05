@@ -1,7 +1,6 @@
 package org.grigorovich.dto;
 
 import org.grigorovich.model.Course;
-import org.grigorovich.model.Teacher;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

@@ -45,7 +45,12 @@ public class TeacherController {
         if (bindingResult.hasErrors()) {
             return "teacher-info";
         } else {
-            service.saveTeacher(teacher);
+            int id = Integer.parseInt(request.getParameter("id"));
+            String name = request.getParameter("name");
+            String surname =  request.getParameter("surname");
+            int salary = Integer.parseInt(request.getParameter("salary"));
+            String username = request.getParameter("username");
+            service.saveOrUpdateTeacher(new Teacher(id, name, surname, salary, username));
             return "redirect:/allTeachers";
         }
     }
