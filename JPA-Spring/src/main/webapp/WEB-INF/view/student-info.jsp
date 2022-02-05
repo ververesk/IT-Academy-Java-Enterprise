@@ -24,10 +24,6 @@
     <br><br>
     USERNAME   <form:input path="username"/>
     <br><br>
-    Courses  <form:checkboxes path="courseList" items="${courses}"  />
-
-
-    <br><br>
     <input class="button" type="submit" value="OK">
 </form:form>
 <br><br>

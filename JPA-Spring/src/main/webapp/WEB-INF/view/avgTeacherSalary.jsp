@@ -1,4 +1,4 @@
-<%@page import="org.grigorovich.app.repositories.TeacherRepositoryJPA" %>
+<%@page import="org.grigorovich.repositories.TeacherRepositoryJPA" %>
 <%@page import="java.lang.String" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

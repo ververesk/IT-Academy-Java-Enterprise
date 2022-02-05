@@ -1,7 +1,11 @@
 package org.grigorovich.JSONControllers;
 
+import org.grigorovich.dto.CourseConverter;
+import org.grigorovich.dto.CourseDTO;
+import org.grigorovich.dto.TeacherConverter;
 import org.grigorovich.exception.NoSuchEntityException;
 import org.grigorovich.model.Course;
+import org.grigorovich.model.Teacher;
 import org.grigorovich.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,31 +26,37 @@ public class CourseJsonController {
     @Autowired
     private CourseService service;
 
+
+    @Autowired
+    CourseConverter courseConverter;
+
     @GetMapping("/courses")
-    public List<Course> showAllCourse() {
+    public List<CourseDTO> showAllCourse() {
         List<Course> allCourses = service.getAllCourses();
-        return allCourses;
+        return courseConverter.entityToDto(allCourses);
     }
 
     @GetMapping("/courses/{id}")
-    public Course getCourse(@PathVariable int id) {
+    public CourseDTO getCourse(@PathVariable int id) {
         Course course = service.getCourse(id);
         if (course == null) {
             throw new NoSuchEntityException("There is no Entity with id=" + id + " in DataBase");
         }
-        return course;
+        return courseConverter.entityToDto(course);
     }
 
     @PostMapping("/courses")
-    public Course addNewCourse(@RequestBody Course course) {
+    public CourseDTO addNewCourse(@RequestBody CourseDTO dto) {
+        Course course = courseConverter.dtoToEntity(dto);
         service.saveCourse(course);
-        return course;
+        return courseConverter.entityToDto(course);
     }
 
     @PutMapping("/courses")
-    public Course updateCourse(@RequestBody Course course) {
+    public CourseDTO updateCourse(@RequestBody CourseDTO dto) {
+        Course course = courseConverter.dtoToEntity(dto);
         service.saveCourse(course);
-        return course;
+        return courseConverter.entityToDto(course);
     }
 
     @DeleteMapping("/courses/{id}")

@@ -31,7 +31,7 @@ import java.io.Serializable;
 @DynamicInsert
 public class Teacher implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -47,8 +47,8 @@ public class Teacher implements Serializable {
     private int salary;
 
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "course_id", updatable = false)
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
+    @JoinColumn(name = "course_id")
     private Course course;
 
     @Column(name = "username")

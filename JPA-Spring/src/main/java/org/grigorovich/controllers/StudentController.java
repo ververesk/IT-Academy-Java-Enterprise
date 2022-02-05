@@ -55,7 +55,7 @@ public class StudentController {
 
     @RequestMapping("/updateStudent")
     public String updateStudent(@RequestParam("stId") int id, Model model) { //получаем из запроса значение id
-        Student student = (Student) service.getStudent(id);
+        Student student = service.getStudent(id);
         model.addAttribute("student", student); //теперь вью будет отбражаться с заполненными формами
         List<Course> courses = serviceCourse.getAllCourses();
         model.addAttribute("courses", courses);
