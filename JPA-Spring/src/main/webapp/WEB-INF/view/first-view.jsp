@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,12 +7,14 @@
         <%@include file="style.css"%>
     </style>
 </head>
-<body>
+<blockuuote>
 <h2> Choose the information you want to know
 </h2>
 <br>
 <br>
-<c:out value="Current User ${requestScope.principal.name}"/>
+<blockquote>
+<c:out value="Current user is: ${requestScope.principal.name}"/>
+    </blockquote>
 <br>
 <br>
 <a href="${pageContext.request.contextPath}/allStudents">Students</a>
