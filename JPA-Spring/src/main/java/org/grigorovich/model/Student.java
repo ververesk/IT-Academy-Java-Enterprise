@@ -54,7 +54,7 @@ public class Student implements Serializable {
     private String username;
 
 
-    @ManyToMany(cascade = {CascadeType.ALL}, fetch= FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE}, fetch= FetchType.EAGER)
     @JoinTable(name = "student_cours_grades", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
     private List<Course> courseList = new ArrayList<>();
 

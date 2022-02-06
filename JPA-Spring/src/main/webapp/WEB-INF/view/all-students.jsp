@@ -13,7 +13,7 @@
 <br>
     <table class="tg" >
         <tr>
-            <th>edit</th>
+<%--            <th>edit</th>--%>
             <th>delete</th>
             <th>id</th>
             <th>name</th>
@@ -23,19 +23,19 @@
             <th>courses</th>
     </tr>
     <c:forEach  var="st" items="${allSt}">
-        <c:url var="updateButton" value="/updateStudent">
-            <c:param name="stId" value="${st.id}"/>
+<%--        <c:url var="updateButton" value="/updateStudent">--%>
+<%--            <c:param name="stId" value="${st.id}"/>--%>
 
-        </c:url>
+<%--        </c:url>--%>
         <c:url var="deleteButton" value="/deleteStudent">
             <c:param name="stId" value="${st.id}"/>
 
         </c:url>
         <tr>
-            <td>
-                <input type="button" value="Update"
-                       onclick="window.location.href = '${updateButton}'">
-            </td>
+<%--            <td>--%>
+<%--                <input type="button" value="Update"--%>
+<%--                       onclick="window.location.href = '${updateButton}'">--%>
+<%--            </td>--%>
             <td>
                 <input type="button" value="Delete"
                        onclick="window.location.href = '${deleteButton}'">
