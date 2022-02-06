@@ -7,11 +7,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -29,7 +30,9 @@ import java.util.Properties;
 @EnableWebMvc
 @EnableTransactionManagement
 @EnableAspectJAutoProxy
-public class MyConfig implements WebMvcConfigurer {
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class MyConfig extends AbstractSecurityWebApplicationInitializer implements WebMvcConfigurer {
 
     @Bean
     public ViewResolver viewResolver() {
@@ -80,7 +83,6 @@ public class MyConfig implements WebMvcConfigurer {
         properties.setProperty("hibernate.dbcp.maxIdle", "10");
         properties.setProperty("hibernate.dbcp.minIdle", "5");
         properties.setProperty("hibernate.dbcp.maxWaitMillis", "-1");
-//        properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
         return properties;
     }
 

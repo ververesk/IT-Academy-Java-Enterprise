@@ -10,6 +10,7 @@ import org.grigorovich.model.Teacher;
 import org.grigorovich.service.CourseService;
 import org.grigorovich.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/", produces = "application/json")
+@PreAuthorize("hasAnyRole('ADMIN')")
 public class TeacherJsonController {
     @Autowired
     private TeacherService service;

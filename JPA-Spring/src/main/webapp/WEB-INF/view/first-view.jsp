@@ -11,6 +11,9 @@
 </h2>
 <br>
 <br>
+<c:out value="Current User ${requestScope.principal.name}"/>
+<br>
+<br>
 <a href="${pageContext.request.contextPath}/allStudents">Students</a>
 <br>
 <br>

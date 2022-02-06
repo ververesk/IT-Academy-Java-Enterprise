@@ -6,6 +6,7 @@ import org.grigorovich.exception.NoSuchEntityException;
 import org.grigorovich.model.Course;
 import org.grigorovich.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/", produces = "application/json")
+@PreAuthorize("hasAnyRole('ADMIN')")
 public class CourseJsonController {
     @Autowired
     private CourseService service;
@@ -59,7 +61,7 @@ public class CourseJsonController {
 
     @DeleteMapping("/courses/{id}")
     public String deleteCourse(@PathVariable int id) {
-        Course course = (Course) service.getCourse(id);
+        Course course = service.getCourse(id);
         if (course == null) {
             throw new NoSuchEntityException("There is no entity with id=" + id + " in DataBase");
         }
