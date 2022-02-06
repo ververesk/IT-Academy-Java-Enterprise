@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -40,7 +41,14 @@ public class TeacherJsonController {
     @GetMapping("/teachers")
     public List<TeacherDTO> showAllTeachers() {
         List<Teacher> allTeachers = service.getAllTeachers();
-        return teacherConverter.entityToDto(allTeachers);
+        List<TeacherDTO> teacherDTOList = new ArrayList<>();
+        for (Teacher t : allTeachers) {
+            Course course = t.getCourse();
+            TeacherDTO teacherDTO = teacherConverter.entityToDto(t);
+            teacherDTO.setCourseDTO(courseConverter.entityToDto(course));
+            teacherDTOList.add(teacherDTO);
+        }
+        return teacherDTOList;
     }
 
     @GetMapping("/teachers/{id}")

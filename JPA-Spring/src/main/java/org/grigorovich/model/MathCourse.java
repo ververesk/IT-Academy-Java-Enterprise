@@ -28,7 +28,7 @@ public class MathCourse implements Serializable {
     @Column(name = "grades")
     private int grades;
 
-    @Column(name = "student_name", updatable = false)
+    @Column(name = "student_name")
     private String studentName;
 
 }

@@ -4,9 +4,11 @@ import org.grigorovich.dto.CourseConverter;
 import org.grigorovich.dto.CourseDTO;
 import org.grigorovich.dto.StudentConverter;
 import org.grigorovich.dto.StudentDTO;
+import org.grigorovich.dto.TeacherDTO;
 import org.grigorovich.exception.NoSuchEntityException;
 import org.grigorovich.model.Course;
 import org.grigorovich.model.Student;
+import org.grigorovich.model.Teacher;
 import org.grigorovich.service.CourseService;
 import org.grigorovich.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -40,7 +43,14 @@ public class StudentJsonController {
     @GetMapping("/students")
     public List<StudentDTO> showAllStudents() {
         List<Student> allStudents = service.getAllStudents();
-        return studentConverter.entityToDto(allStudents);
+        List<StudentDTO> studentDTOList = new ArrayList<>();
+        for (Student st : allStudents) {
+            List<Course> courseList = st.getCourseList();
+            StudentDTO studentDTO = studentConverter.entityToDto(st);
+            studentDTO.setCourseDTO(courseConverter.entityToDto(courseList));
+            studentDTOList.add(studentDTO);
+        }
+        return studentDTOList;
 
     }
 

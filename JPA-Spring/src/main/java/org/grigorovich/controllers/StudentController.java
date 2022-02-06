@@ -48,7 +48,12 @@ public class StudentController {
         if (bindingResult.hasErrors()) {
             return "student-info";
         } else {
-            service.saveStudent(student);
+            int id = Integer.parseInt(request.getParameter("id"));
+            String name = request.getParameter("name");
+            String surname =  request.getParameter("surname");
+            int age = Integer.parseInt(request.getParameter("age"));
+            String username = request.getParameter("username");
+            service.saveStudent(new Student(id, name, surname, age, username));
             return "redirect:/allStudents";
         }
     }

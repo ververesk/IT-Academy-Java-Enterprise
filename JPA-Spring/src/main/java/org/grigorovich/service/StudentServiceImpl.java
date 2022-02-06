@@ -2,7 +2,9 @@ package org.grigorovich.service;
 
 
 import org.grigorovich.model.Student;
+import org.grigorovich.repositories.StudentRepositoryForSaveAndUpdate;
 import org.grigorovich.repositories.StudentRepositoryJPA;
+import org.grigorovich.repositories.TeacherRepositoryForSaveAndUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private StudentRepositoryJPA studentRepositoryJPA;
+
+    @Autowired
+    private StudentRepositoryForSaveAndUpdate studentRepositoryForSaveAndUpdate;
 
     @Override
     @Transactional
@@ -43,5 +48,11 @@ public class StudentServiceImpl implements StudentService {
     @Transactional
     public void deleteStudent(int id) {
         studentRepositoryJPA.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void saveOrUpdateStudent(Student student) {
+        studentRepositoryForSaveAndUpdate.saveOrUpdateStudent(student);
     }
 }

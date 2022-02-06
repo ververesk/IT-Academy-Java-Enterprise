@@ -14,7 +14,7 @@
     Grades   <form:input path="grades"/>
     <form:errors path="grades"/>
     <br><br>
-    <form:hidden path="studentName"></form:hidden>
+    Student Name <form:input path="studentName"/>
 
     <br><br>
     <input class="button" type="submit" value="OK">
