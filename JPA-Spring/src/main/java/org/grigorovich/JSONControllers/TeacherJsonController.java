@@ -98,4 +98,14 @@ public class TeacherJsonController {
         service.deleteTeacher(id);
         return "Entity with id=" + id + " was deleted";
     }
+
+    @GetMapping("/sum")
+    public Long sumSalariesOfTeachers() {
+        return service.sumTeacherSalary();
+    }
+
+    @GetMapping("/average")
+    public Double avgSalariesOfTeachers() {
+        return service.avgTeacherSalary();
+    }
 }
