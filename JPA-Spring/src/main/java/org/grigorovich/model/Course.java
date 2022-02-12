@@ -35,11 +35,6 @@ public class Course implements Serializable {
     @NotBlank(message = "this is required field")
     private String courseName;
 
-//    @JsonIgnore
-//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH, CascadeType.MERGE})
-//    @JoinTable(name = "student_cours_grades", joinColumns = @JoinColumn(name="course_id"), inverseJoinColumns = @JoinColumn(name="student_id"))
-//    private List<Student> studentList = new ArrayList<>();
-
 
     public Course withCourseId(int courseId) {
         setCourseId(courseId);

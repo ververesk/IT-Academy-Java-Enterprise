@@ -31,16 +31,16 @@ import java.io.Serializable;
 @DynamicInsert
 public class Teacher implements Serializable {
     @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
     @Column(name = "name")
-    @NotBlank(message="this is required field")
+    @NotBlank(message = "this is required field")
     private String name;
 
     @Column(name = "surname")
-    @NotBlank(message="this is required field")
+    @NotBlank(message = "this is required field")
     private String surname;
 
     @Column(name = "salary")

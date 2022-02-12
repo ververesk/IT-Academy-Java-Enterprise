@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalExceptionHandler { // любой JSON контроллер может пользоваться обработкой исключений
-    @ExceptionHandler //метод ответственный за обратботку исключений (нет такого id)
+    @ExceptionHandler //метод ответственный за обработку исключений (нет такого id)
     public ResponseEntity<IncorrectData> handleException(NoSuchEntityException entityException) {
         IncorrectData data = new IncorrectData();
         data.setInfo(entityException.getMessage());

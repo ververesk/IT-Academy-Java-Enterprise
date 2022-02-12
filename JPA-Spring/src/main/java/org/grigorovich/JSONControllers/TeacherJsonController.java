@@ -47,7 +47,11 @@ public class TeacherJsonController {
         for (Teacher t : allTeachers) {
             Course course = t.getCourse();
             TeacherDTO teacherDTO = teacherConverter.entityToDto(t);
-            teacherDTO.setCourseDTO(courseConverter.entityToDto(course));
+            if (course!=null) {
+                teacherDTO.setCourseDTO(courseConverter.entityToDto(course));
+            } else {
+                teacherDTO.setCourseDTO(null);
+            }
             teacherDTOList.add(teacherDTO);
         }
         return teacherDTOList;
@@ -61,7 +65,11 @@ public class TeacherJsonController {
         if (teacherDTO == null) {
             throw new NoSuchEntityException("There is no Entity with id=" + id + " in DataBase");
         }
-        teacherDTO.setCourseDTO(courseConverter.entityToDto(course));
+        if (course!=null) {
+            teacherDTO.setCourseDTO(courseConverter.entityToDto(course));
+        } else {
+            teacherDTO.setCourseDTO(null);
+        }
         return teacherDTO;
     }
 
@@ -99,12 +107,12 @@ public class TeacherJsonController {
         return "Entity with id=" + id + " was deleted";
     }
 
-    @GetMapping("/sum")
+    @GetMapping("/teachers/sum")
     public Long sumSalariesOfTeachers() {
         return service.sumTeacherSalary();
     }
 
-    @GetMapping("/average")
+    @GetMapping("/teachers/average")
     public Double avgSalariesOfTeachers() {
         return service.avgTeacherSalary();
     }
