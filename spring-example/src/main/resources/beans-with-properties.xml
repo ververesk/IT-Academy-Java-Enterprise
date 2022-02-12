@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-init-method="init" default-destroy-method="destroy">
+
+    <context:property-placeholder location="cat.properties, owner.properties, home.properties"/>
+
+
+    <bean id="shura" class="org.grigorovich.spring.model.Cat">
+        <property name="id" value="${shura.id}"/>
+        <property name="type" value="${shura.type}"/>
+        <property name="name" value="${shura.name}"/>
+        <property name="abilityToCatchMice" value="${shura.abilityToCatchMice}"/>
+    </bean>
+
+    <bean id="veronika" class="org.grigorovich.spring.model.Owner">
+        <property name="id" value="${veronika.id}"/>
+        <property name="name" value="${veronika.name}"/>
+        <property name="listPets" >
+            <list>
+                <ref bean="shura"/>
+            </list>
+        </property>
+        <property name="quarterPetCost" value="#{${veronika.quarterPetCost}}"/>
+    </bean>
+
+    <bean id="veronikaHome" class="org.grigorovich.spring.model.Home">
+        <property name="id" value="${veronikaHome.id}"/>
+        <property name="square" value="${veronikaHome.square}"/>
+        <property name="owner" ref="veronika"/>
+    </bean>
+</beans>
